@@ -1,0 +1,28 @@
+Approval Mangement System
+
+In brief Outlay of the project concept and features.
+
+
+User login:
+1. Form page for raising request of budget approval
+2. View history page for list of requests raised and their status.
+3. Page to uplaod required supporting documents for the request if, the request is accepted.
+4. option to withdraw the request before any action taken from managers.
+5. Option to edit, unless it is approved.
+
+
+Manager login:
+1. View page of requests raised for his/her approval.
+2. Option to take action on the request(approve or reject).
+3. Form page to raise a request budget approval from his side.
+4. Another option to escalate the request to his/her higher managers to take action on request, If request budget is more than his/her limit.
+5. page to view the history requests raised by him or escalated by him.
+
+In general: 
+1. Page for Login.
+2. Mailing feature during the process.
+3. Toaster popups.
+
+Extra Adding up features:
+1. Employee details management and Viewing the details.
+
