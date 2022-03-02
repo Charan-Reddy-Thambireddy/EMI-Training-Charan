@@ -11,7 +11,7 @@ import { ProductService } from './product.service';
 export class ProductDetailsComponent implements OnInit {
   pageTitle:string='Product Details';
 
-  productList:IProduct[]|undefined;
+  productList:IProduct[];
   product:IProduct|undefined;
   errorMessage:string='';
   sub!:Subscription;
