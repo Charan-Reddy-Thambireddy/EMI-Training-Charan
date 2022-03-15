@@ -6,19 +6,23 @@ body {
   p {font-size: 16px;}
   .margin {margin-bottom: 45px;}
   .bg-1 { 
-    background-color: #1abc9c; /* Green */
+    background-color: #cfe0dd; 
     color: #ffffff;
   }
   .bg-2 { 
-    background-color: #474e5d; /* Dark Blue */
+    background-color: #474e5d; 
     color: #ffffff;
+    padding-top: 0% !important;
+    padding-bottom: 0% !important;
+    padding-left: 0% !important;
+    padding-right: 0% !important;
   }
   .bg-3 { 
-    background-color: #ffffff; /* White */
+    background-color: #cfe0dd; 
     color: #555555;
   }
   .bg-4 { 
-    background-color: #2f2f2f; /* Black Gray */
+    background-color: #2f2f2f; 
     color: #fff;
   }
   .container-fluid {
