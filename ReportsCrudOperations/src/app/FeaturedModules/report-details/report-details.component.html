@@ -1,0 +1,36 @@
+<div class="example-container mat-elevation-z8">
+    <div class="button-row">
+        <a mat-raised-button color="primary" [routerLink]="['/reports-list']">
+            <mat-icon>view_list</mat-icon>
+        </a>
+    </div>
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title>
+                From
+                <mat-card-subtitle><h3>{{report.from}}</h3></mat-card-subtitle>
+                
+            </mat-card-title>
+            <mat-card-title>
+                To
+                <mat-card-subtitle><h3>{{report.to}}</h3></mat-card-subtitle>
+            </mat-card-title>
+            <mat-card-title>
+                Created Date
+                <mat-card-subtitle><h3>{{report.dateCreated | date:'medium'}}</h3></mat-card-subtitle>
+            </mat-card-title>
+            <mat-card-title>
+                Permanent Link ?
+                <mat-card-subtitle><h3>{{report.permanentLink}}</h3></mat-card-subtitle>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-actions>
+            <a mat-raised-button color="primary" (click)="delete(report.id)">
+                <mat-icon>delete</mat-icon>
+            </a>
+            <a mat-raised-button color="primary" (click)="update(report.id)">
+                <mat-icon>edit</mat-icon>
+            </a>
+        </mat-card-actions>
+    </mat-card>
+</div>

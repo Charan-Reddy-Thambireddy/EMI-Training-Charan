@@ -3,7 +3,7 @@ export class Report {
     from: string;
     to: string;
     dateCreated: Date;
-    permanentLink:boolean
+    permanentLink:boolean;
 
     constructor(id:number,from:string,to:string,dateCreated:Date,permanentLink:boolean)
     {

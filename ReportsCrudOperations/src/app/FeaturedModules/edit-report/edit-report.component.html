@@ -1,0 +1,48 @@
+<div class="example-container mat-elevation-z8" style="margin-top:1%">
+    <div class="button-row">
+        <a mat-raised-button color="primary" [routerLink]="['/reports-list']">
+            <mat-icon>view_list</mat-icon>
+        </a>
+    </div>
+    <mat-card >
+        <form [formGroup]="ReportForm" (ngSubmit)="onFormSubmit(ReportForm.value)">
+            <mat-form-field>
+                <input matInput placeholder="Report No"  formControlName="id" readonly="true">               
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input matInput placeholder="Enter From Report" formControlName="from">
+                <mat-error>
+                    <span *ngIf="!ReportForm.get('from')?.valid && ReportForm.get('from')?.touched">From Required</span>
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input placeholder="Enter From Report" matInput formControlName="to">
+                <mat-error>
+                    <span *ngIf="!ReportForm.get('to')?.valid && ReportForm.get('to')?.touched">To Required</span>
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input type="datetime-local" matInput placeholder="Enter Created Date" formControlName="dateCreated" >
+                <mat-error>
+                    <span *ngIf="!ReportForm.get('dateCreated')?.valid && ReportForm.get('dateCreated')?.touched">dateCreated Required</span>
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Permanent Link</mat-label>
+                <select matNativeControl formControlName="permanentLink" required>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+              </mat-form-field>
+            <div class="button-row">
+                <button mat-raised-button  color="primary" type="submit" [disabled]="!ReportForm.valid">
+                    <mat-icon>save</mat-icon>
+                </button>
+            </div>
+        </form>
+    </mat-card>
+</div>

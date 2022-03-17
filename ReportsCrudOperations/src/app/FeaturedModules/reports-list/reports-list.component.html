@@ -1,37 +1,43 @@
-<table mat-table [dataSource]="reportsList" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="from">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.from}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="to">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.to}} </td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="dateCreated">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.dateCreated}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="permanentLink">
-        <th mat-header-cell *matHeaderCellDef> Symbol </th>
-        <td mat-cell *matCellDef="let element"> {{element.permanentLink}} </td>
-      </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+<div class="example-container mat-elevation-z8">
+  <div class="button-row">
+    <div class="mat-elevation-z4">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Report No </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="from">
+          <th mat-header-cell *matHeaderCellDef> from </th>
+          <td mat-cell *matCellDef="let element"> {{element.from}} </td>
+        </ng-container>
+        <ng-container matColumnDef="to">
+          <th mat-header-cell *matHeaderCellDef> to </th>
+          <td mat-cell *matCellDef="let element"> {{element.to}} </td>
+        </ng-container>
+        <ng-container matColumnDef="dateCreated">
+          <th mat-header-cell *matHeaderCellDef> Date Created </th>
+          <td mat-cell *matCellDef="let element"> {{element.dateCreated| date:'medium'}} </td>
+        </ng-container>
+        <ng-container matColumnDef="permanentLink">
+          <th mat-header-cell *matHeaderCellDef> Permanent Link </th>
+          <td mat-cell *matCellDef="let element"> {{element.permanentLink ?'Yes':'No'}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let element"><a [routerLink]="['/details',element.id]">
+              <mat-icon>assignment</mat-icon>
+            </a> </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons 
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+      <a mat-raised-button color="primary" (click)="openDialog()">
+        <mat-icon>add_box</mat-icon>
+      </a>
+    </div>
+  </div>
+</div>
