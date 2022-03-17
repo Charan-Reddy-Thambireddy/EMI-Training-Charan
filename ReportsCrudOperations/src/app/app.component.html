@@ -1,4 +1,4 @@
-<div>
+<!--<div>
     <div style="position: relative;width: 100%;">
     <nav class="navbar navbar-default" style="margin-bottom: 0%;">
         <div class="container-fluid">
@@ -32,17 +32,29 @@
         </div>
     </footer>
     </div>
-    </div>
-    <!--<p>
+    </div>-->
+    <p>
       <mat-toolbar color="primary">
+        <mat-toolbar-row>
+        <a href="https://www.euromonitor.com/"><img src="https://www.euromonitor.com/content/images/logos/emi-logo.svg" style="width: 100%;padding: 1%;" ></a>
+        <span class="example-spacer"></span>
         <span>REPORTS CRUD OPERATIONS</span>
         <span class="example-spacer"></span>
-        <button mat-raised-button color="warn" >url</button>
-        <span><p routerLink="/reports-list">URL</p></span>
+        <button class="btn btn-primary" mat-button> Home </button>
+        <button class="btn btn-primary nav-button" mat-button> About </button>
+        <button class="btn btn-primary nav-button" mat-button [routerLink]="'/reports-list'"> Reports Url's List </button>
+        <button class="btn btn-primary nav-button" mat-button [routerLink]="['/add',1]"> Add Reports Url </button>
+        
+        </mat-toolbar-row>
       </mat-toolbar>
     </p>
-    <router-outlet></router-outlet>-->
-    
+  <router-outlet></router-outlet>
+    <div class="footer">
+      <footer class="text-center text-lg-start text-white footer">       
+        <div class="text-center p-3" style="padding: 0.5%;">
+          © 2022 Copyright Euromonitor is privately owned & trademarked.
+        </div>
+    </footer>
     
     
     

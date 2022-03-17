@@ -1,4 +1,4 @@
-<div class="example-container mat-elevation-z8">
+<div class="example-container mat-elevation-z8" >
     <div class="button-row">
         <a mat-raised-button  color="primary" [routerLink]="['/reports-list']">
             <mat-icon>undo</mat-icon>
@@ -7,12 +7,11 @@
             <mat-icon>view_list</mat-icon>
         </a>
     </div>
-    <mat-card class="example-card">
-        <mat-card-header>
+    <mat-card class="example-card" style="margin-left:25%; width:50%; text-align: center !important;">
+        <mat-card-content>
             <mat-card-title>
                 From
-                <mat-card-subtitle><h3>{{report.from}}</h3></mat-card-subtitle>
-                
+                <mat-card-subtitle><h3>{{report.from}}</h3></mat-card-subtitle>               
             </mat-card-title>
             <mat-card-title>
                 To
@@ -26,7 +25,8 @@
                 Permanent Link ?
                 <mat-card-subtitle><h3>{{report.permanentLink}}</h3></mat-card-subtitle>
             </mat-card-title>
-        </mat-card-header>
+        </mat-card-content>
+        <mat-divider insert></mat-divider>
         <mat-card-actions>
             <a mat-raised-button color="primary" (click)="delete(report.id)">
                 <mat-icon>delete</mat-icon>

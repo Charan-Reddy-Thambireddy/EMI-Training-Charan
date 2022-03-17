@@ -10,10 +10,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatToolbarModule} from '@angular/material/toolbar';
-
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
-  declarations: [ ],
+  declarations: [ 
+    
+  ],
   imports: [
     CommonModule,
     MatInputModule,
@@ -25,7 +27,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatTableModule,
     MatDialogModule,
     MatPaginatorModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDividerModule
   ],
   exports:[
     MatInputModule,
@@ -37,7 +40,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatTableModule,
     MatDialogModule,
     MatPaginatorModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDividerModule
     
   ]
 })

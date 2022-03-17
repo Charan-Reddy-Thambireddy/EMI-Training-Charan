@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReportsService } from 'src/app/Services/reports.service';
 
 @Component({
@@ -10,12 +10,14 @@ import { ReportsService } from 'src/app/Services/reports.service';
 })
 export class AddReportComponent implements OnInit {
   ReportForm: FormGroup;
+  dailogtoggle:number=0;
   
-  constructor(private ReportService: ReportsService,private router: Router, private formBuilder: FormBuilder) {
+  constructor(private ReportService: ReportsService,private router: Router, private formBuilder: FormBuilder,private route: ActivatedRoute ) {
        
      }
   
     ngOnInit(): void {
+      this.dailogtoggle=Number(this.route.snapshot.params['no']);
   
       this.ReportForm=this.formBuilder.group({
      

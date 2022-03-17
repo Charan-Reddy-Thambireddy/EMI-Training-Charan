@@ -10,6 +10,7 @@ const routes: Routes = [
   
   {path:'reports-list',component:ReportsListComponent},
   {path:'add',component:AddReportComponent},
+  {path:'add/:no',component:AddReportComponent},
   {path:'edit/:id',component:EditREportComponent},
   {path:'details/:id',component:ReportDetailsComponent},
   {path:'delete',component:DeleteReportComponent},

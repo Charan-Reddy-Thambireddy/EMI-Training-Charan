@@ -1,4 +1,4 @@
-<div class="example-container mat-elevation-z8">
+<div class="example-container1 mat-elevation-z8">
     <div class="button-row">
         <a mat-raised-button mat-dialog-close color="primary" [routerLink]="['/reports-list']">
             <mat-icon>undo</mat-icon>
@@ -6,39 +6,40 @@
     </div>
     <mat-card class="example-card">
         <form [formGroup]="ReportForm" (ngSubmit)="onFormSubmit(ReportForm.value)">
-            <mat-form-field>
+            <mat-form-field class="add-form-feilds">
                 <input matInput placeholder="Enter From Report URL" formControlName="from">
                 <mat-error>
                     <span *ngIf="!ReportForm.get('from')?.valid && ReportForm.get('from')?.touched">From Required</span>
                 </mat-error>
             </mat-form-field>
-            <mat-form-field>
+            <br>
+            <mat-form-field class="add-form-feilds">
                 <input placeholder="Enter To Report URL" matInput formControlName="to">
                 <mat-error>
                     <span *ngIf="!ReportForm.get('to')?.valid && ReportForm.get('to')?.touched">To Required</span>
                 </mat-error>
             </mat-form-field>
-            <mat-form-field>
+            <br>
+            <mat-form-field class="add-form-feilds">
                 <input type="datetime-local" matInput placeholder="Enter Created Date" formControlName="dateCreated">
                 <mat-error>
                     <span *ngIf="!ReportForm.get('dateCreated')?.valid && ReportForm.get('dateCreated')?.touched">dateCreated Required</span>
                 </mat-error>
             </mat-form-field>
-            <mat-form-field>
+            <br>
+            <mat-form-field class="add-form-feilds">
                 <mat-label>Permanent Link</mat-label>
                 <select matNativeControl formControlName="permanentLink" required>
                   <option value="true">Yes</option>
                   <option value="false">No</option>
                 </select>
               </mat-form-field>
-           <!-- <mat-form-field>
-                <input matInput formControlName="permanentLink">
-                <mat-error>
-                    <span *ngIf="!ReportForm.get('permanentLink')?.valid && ReportForm.get('permanentLink')?.touched"> permanentLink
-                        Required</span>
-                </mat-error>
-            </mat-form-field>-->
-            <div class="button-row">
+            <div class="button-row" *ngIf="dailogtoggle==1">
+                <button mat-raised-button color="primary" type="submit" [disabled]="!ReportForm.valid">
+                    <mat-icon>save</mat-icon>
+                </button>
+            </div>
+            <div class="button-row" *ngIf="dailogtoggle!=1">
                 <button mat-raised-button mat-dialog-close color="primary" type="submit" [disabled]="!ReportForm.valid">
                     <mat-icon>save</mat-icon>
                 </button>
