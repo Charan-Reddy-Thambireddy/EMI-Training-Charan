@@ -1,0 +1,1 @@
+Select * from Employees where FirstName not like '[a-p]%'

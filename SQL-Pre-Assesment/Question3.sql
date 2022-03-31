@@ -1,0 +1,1 @@
+Select * from Employees where FirstName like 'a%' and len(FirstName)=5
