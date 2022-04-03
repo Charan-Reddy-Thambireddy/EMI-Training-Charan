@@ -8,7 +8,9 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'home',component:HomeComponent},
   {path:'admin',loadChildren:()=>import('./FeatureModules/admin/admin.module')
-  .then(module=>module.AdminModule)}
+  .then(module=>module.AdminModule)},
+  {path:'user',loadChildren:()=>import('./FeatureModules/user/user.module')
+  .then(module=>module.UserModule)}
 
 ];
 

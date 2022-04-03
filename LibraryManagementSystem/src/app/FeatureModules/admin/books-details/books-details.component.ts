@@ -12,7 +12,6 @@ export class BooksDetailsComponent implements OnInit {
 
   Book = new Book();
   constructor(private adminService: AdminService, private route: Router, private router: ActivatedRoute, public dialog: MatDialog) { 
-
   }
 
   ngOnInit(): void {

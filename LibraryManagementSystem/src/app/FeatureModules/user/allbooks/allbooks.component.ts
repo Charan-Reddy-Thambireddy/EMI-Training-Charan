@@ -6,11 +6,11 @@ import { MatTableDataSource} from '@angular/material/table';
 import { AdminService } from 'src/app/Services/admin.service';
 
 @Component({
-  selector: 'app-books-list',
-  templateUrl: './books-list.component.html',
-  styleUrls: ['./books-list.component.css']
+  selector: 'app-allbooks',
+  templateUrl: './allbooks.component.html',
+  styleUrls: ['./allbooks.component.css']
 })
-export class BooksListComponent implements OnInit {
+export class AllbooksComponent implements OnInit {
 
   BooksList:Book[];
   displayedColumns=['id','Name','Genere','AuthorName','Description','Actions'];

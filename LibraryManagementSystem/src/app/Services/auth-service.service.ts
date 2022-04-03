@@ -10,7 +10,7 @@ export class AuthServiceService {
 
   baseUrl='http://localhost:3000/UserCreds';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  userdetails = new Login(0,'','',0,false);
+  userdetails = new Login();
   constructor(private http:HttpClient) { }
   private handleError(errorResponse:HttpErrorResponse)
   {
@@ -27,8 +27,22 @@ export class AuthServiceService {
   }
 
 
-  public getUserdetails(creds:any):Observable<Login>{
+  public getUserdetails(creds:any):Observable<any>{
     const url=`${this.baseUrl}?userName=${creds.userName}&password=${creds.password}`;
     return this.http.get<Login>(url).pipe(catchError(this.handleError));
+  }
+
+  public validateDetails(creds:any):Login{
+    this.getUserdetails(creds.value).subscribe(data=>{  
+      data.forEach((a:any) => {
+        this.userdetails=a;
+          });     
+    });
+    return this.userdetails;
+  }
+
+  public logout():void{
+    
+    this.userdetails=new Login();
   }
 }

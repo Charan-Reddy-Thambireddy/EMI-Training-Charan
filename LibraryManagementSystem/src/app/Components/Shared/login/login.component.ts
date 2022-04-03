@@ -12,7 +12,7 @@ import { AuthServiceService } from 'src/app/Services/auth-service.service';
 export class LoginComponent implements OnInit {
   public userName:string='';
   public password:string='';
-  public user :Login = new Login(0,'','',0,false);
+  public user :Login = new Login();
   public isValidCreds:boolean=true;
   constructor(private authservice :AuthServiceService,private router: Router) { 
 
@@ -22,20 +22,41 @@ export class LoginComponent implements OnInit {
   }
 
   public login(creds:any):void
-  {    
-    //const user=this.authservice.ValidateUser(creds.value);
-    this.authservice.getUserdetails(creds.value).subscribe(data=>{  
+  {   
+    this.user =this.authservice.validateDetails(creds);
+    if(this.user.valid==true)
+    {
+      console.log(this.user.userName);
+      this.isValidCreds=true;
+      if(this.user.role==1)
+      {
+        alert('logged in succesfully as Admin');
+        this.router.navigate(['admin']);
+      }
+      else{
+        alert('logged in succesfully as'+this.user.userName);
+        this.router.navigate(['user']);
+      }
+    }
+    else{
+      this.isValidCreds=false;
+    }
+
+   /* this.authservice.getUserdetails(creds.value).subscribe(data=>{  
       console.log(data);    
       this.user=data;
-      console.log(this.user);
-      this.validateUser(this.user);
-    });
+      data.forEach((a:any) => {
+        this.validateUser(a);
+          });
+      
+    });*/
     
     
   }
-  public validateUser(user:Login):void{
+ /* public validateUser(user:Login):void{
     if(user.valid==true)
     {
+      console.log(user.userName);
       this.isValidCreds=true;
       if(user.role==1)
       {
@@ -48,6 +69,6 @@ export class LoginComponent implements OnInit {
     else{
       this.isValidCreds=false;
     }
-  }
+  }*/
 
 }
