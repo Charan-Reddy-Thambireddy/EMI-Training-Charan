@@ -1,5 +1,5 @@
 export class Book {
-    Bookid:number;
+    id:number;
     Name:string;
     Genere: string;
     AuthorName:string;

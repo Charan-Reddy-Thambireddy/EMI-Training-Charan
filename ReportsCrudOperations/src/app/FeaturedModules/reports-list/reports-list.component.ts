@@ -3,8 +3,8 @@ import { Report } from 'src/app/Models/report';
 import { ReportsService } from 'src/app/Services/reports.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddReportComponent } from '../add-report/add-report.component';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator} from '@angular/material/paginator';
+import { MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-reports-list',
@@ -28,6 +28,7 @@ export class ReportsListComponent implements OnInit {
       this.reportsList=response;
       this.dataSource = new MatTableDataSource<Report>(response);
       this.dataSource.paginator=this.paginator;
+      console.log('datasource');
       console.log(this.dataSource);
       },error=>{
         console.log(error);

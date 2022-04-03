@@ -7,6 +7,12 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 
 @NgModule({
@@ -18,7 +24,12 @@ import { MatMenuModule } from '@angular/material/menu';
     MatInputModule,
     MatIconModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSortModule,
+    MatTableModule,
+    MatDialogModule,
+    MatPaginatorModule,
+    MatDividerModule
   ],
   imports: [
     CommonModule,
@@ -28,7 +39,12 @@ import { MatMenuModule } from '@angular/material/menu';
     MatInputModule,
     MatIconModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSortModule,
+    MatTableModule,
+    MatDialogModule,
+    MatPaginatorModule,
+    MatDividerModule
   ]
 })
 export class MaterialModule { 

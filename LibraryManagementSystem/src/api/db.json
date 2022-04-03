@@ -1,0 +1,58 @@
+{
+  "UserCreds": [
+    {
+      "userId": 1001,
+      "userName": "Admin",
+      "password": "qwerty",
+      "role": 1,
+      "valid": true
+    },
+    {
+      "userId": 1002,
+      "userName": "Charan",
+      "password": "Lucky",
+      "role": 2,
+      "valid": true
+    },
+    {
+      "userId": 1003,
+      "userName": "Vijay",
+      "password": "bhaskar@67",
+      "role": 2,
+      "valid": true
+    },
+    {
+      "userId": 1004,
+      "userName": "shanmukhi",
+      "password": "@123oi",
+      "role": 2,
+      "valid": true
+    }
+  ],
+  "Books": [
+    {
+      "id": 1,
+      "Name": "Africa in the New Trade Environment",
+      "Genere": "Social",
+      "AuthorName": "Marcio Cruz, Mark A. Dutz, Carlos Rodríguez-Castelán",
+      "Description": "A Youth boy Carrer strugle story",
+      "Content": "Sub-Saharan Africa represents only a small share of global production and trade while hosting half of the extreme poor worldwide. To catch up with the rest of the world, the continent has no alternative: it must undertake reforms to scale up its supply capacity while better linking its production and trade to the global economy. If it does so, it stands to gain from unlimited demand and innovation along the supply chain. Some progress has been made over the past decade, with the region’s exports and imports growing rapidly. Because most African economies rely heavily on trade for a large share of national income, they will also be more vulnerable to the trade disruptions of external shocks, as illustrated by the recent COVID-19 pandemic. Africa in the New Trade Environment: Market Access in Troubled Times provides a comprehensive, state-of-the-art analysis by a team of renowned trade economists who present a strategy to bolster Sub-Saharan Africa’s market access in the current global environment."
+    },
+    {
+      "id": 2,
+      "Name": "Mr.Jane and Finch",
+      "Genere": "biography-auto",
+      "AuthorName": "Jane",
+      "Description": "Winston LaRose is an 80-year-old community activist affectionately known as Mr.Jane and Finch.",
+      "Content": "Winston LaRose is an 80-year-old community activist affectionately known as Mr.Jane and Finch. He has dedicated the last 25 years to supporting residents who live in the troubled community of Jane and Finch. With gentrification high up on the political agenda, he decides, for the first time, to run for office as Councillor of Toronto's Ward 7 and challenge the established powers that be."
+    },
+    {
+      "id": 3,
+      "Name": "Mr.Jane",
+      "Genere": "biography",
+      "AuthorName": "La Rose",
+      "Description": "Winston LaRose is an 80-year-old community activist affectionately known as Mr.Jane and Finch.",
+      "Content": "Winston LaRose is an 80-year-old community activist affectionately known as Mr.Jane and Finch. He has dedicated the last 25 years to supporting residents who live in the troubled community of Jane and Finch. With gentrification high up on the political agenda, he decides, for the first time, to run for office as Councillor of Toronto's Ward 7 and challenge the established powers that be."
+    }
+  ]
+}

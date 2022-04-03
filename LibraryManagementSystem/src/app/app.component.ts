@@ -10,6 +10,6 @@ export class AppComponent {
   public isAuthenticated = false;
   
   public logout(): void {
-    // todo
+    
   }
 }
