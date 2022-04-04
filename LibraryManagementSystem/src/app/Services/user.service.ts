@@ -4,6 +4,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { Book } from '../Models/book';
 import { AdminService } from './admin.service';
 import { AuthServiceService } from './auth-service.service';
+import { Login } from '../Models/login';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { AuthServiceService } from './auth-service.service';
 export class UserService {
 
   baseUrl='http://localhost:3000/Books';
+  baseUrl1='http://localhost:3000/UserCreds';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   BooksTaken:Book[];
   constructor(private http:HttpClient,private adminservice:AdminService,private authservice:AuthServiceService) { }
@@ -40,13 +42,16 @@ export class UserService {
     return this.BooksTaken;
 
   }
+  public ReadRequestEdit(Login:Login):Observable<Login>{
+    console.log('In Service');
+    console.log(Login);
+    console.log(Login.id);
+    const url=`${this.baseUrl1}/${Login.id}`;
+    console.log(url);
+    //return this.http.put(url,Login);
+    return this.http.put<Login>(url,Login, { headers: this.headers }).pipe(catchError(this.handleError));
+  }
 
-  public deleteBook(id:number):Observable<Book>{
-    const url=`${this.baseUrl}/${id}`;
-    return this.http.delete<Book>(url).pipe(catchError(this.handleError));
-  }
-  public editBook(Book:any):Observable<Book>{
-    const url=`${this.baseUrl}/${Book.id}`;
-    return this.http.put<Book>(url,Book, { headers: this.headers }).pipe(catchError(this.handleError));
-  }
+
+
 }

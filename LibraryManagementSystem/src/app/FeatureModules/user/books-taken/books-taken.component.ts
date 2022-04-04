@@ -26,18 +26,13 @@ export class BooksTakenComponent implements OnInit {
   console.log(this.BooksList);
   this.dataSource=new MatTableDataSource<Book>(this.userservice.getBooksTaken());
   this.dataSource.paginator=this.paginator;
-    
     this.adminservice.getAllBooks().subscribe(response=>
       {
         this.BooksList=response.filter(a =>this.authservice.userdetails.Books.includes(a.id));
         this.dataSource=new MatTableDataSource<Book>(this.userservice.getBooksTaken());
         this.dataSource.paginator=this.paginator;
-        console.log(this.BooksList);
       },error=>{
         console.log(error);
       })
-
  }
-
-
 }

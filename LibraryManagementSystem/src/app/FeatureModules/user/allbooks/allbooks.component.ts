@@ -4,6 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator} from '@angular/material/paginator';
 import { MatTableDataSource} from '@angular/material/table';
 import { AdminService } from 'src/app/Services/admin.service';
+import { AuthServiceService } from 'src/app/Services/auth-service.service';
+import { Login } from 'src/app/Models/login';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-allbooks',
@@ -15,12 +18,13 @@ export class AllbooksComponent implements OnInit {
   BooksList:Book[];
   displayedColumns=['id','Name','Genere','AuthorName','Description','Actions'];
   dataSource = new MatTableDataSource<Book>();
+  UserDetails:Login;
 
  @ViewChild(MatPaginator) paginator: MatPaginator;
- constructor(private Bookservice:AdminService, public dialog: MatDialog) { }
+ constructor(private adminservice:AdminService, public dialog: MatDialog, public authservice:AuthServiceService, public userservice:UserService) { }
 
  ngOnInit(): void {
-   this.Bookservice.getAllBooks().subscribe(response=>
+   this.adminservice.getAllBooks().subscribe(response=>
      {
      this.BooksList=response;
      this.dataSource = new MatTableDataSource<Book>(response);
@@ -30,7 +34,15 @@ export class AllbooksComponent implements OnInit {
      },error=>{
        console.log(error);
      })
-
  }
 
+ public RequestToRead(id:number):void
+ {
+   console.log(id);
+  this.UserDetails=this.authservice.userdetails;
+  this.UserDetails.Books.push(id);
+  console.log(this.UserDetails);
+  this.userservice.ReadRequestEdit(this.UserDetails).subscribe(res=>{console.log(res)});
+  alert('Request Accepted');
+ }
 }

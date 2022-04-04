@@ -8,6 +8,7 @@ import { BooksListComponent } from './books-list/books-list.component';
 import { BooksDetailsComponent } from './books-details/books-details.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminnavComponent } from './adminnav/adminnav.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EditBookComponent,
     DeleteBookComponent,
     BooksListComponent,
-    BooksDetailsComponent
+    BooksDetailsComponent,
+    AdminnavComponent
   ],
   imports: [
     CommonModule,

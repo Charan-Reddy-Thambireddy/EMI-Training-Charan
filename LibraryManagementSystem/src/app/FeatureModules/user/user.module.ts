@@ -18,10 +18,10 @@ import { UserNavComponent } from './user-nav/user-nav.component';
   ],
   imports: [
     CommonModule,
-    UserRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UserRoutingModule
   ]
 })
 export class UserModule { }

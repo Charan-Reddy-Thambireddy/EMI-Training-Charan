@@ -43,6 +43,7 @@ export class AdminService {
     return this.http.delete<Book>(url).pipe(catchError(this.handleError));
   }
   public editBook(Book:any):Observable<Book>{
+    console.log(Book);
     const url=`${this.baseUrl}/${Book.id}`;
     return this.http.put<Book>(url,Book, { headers: this.headers }).pipe(catchError(this.handleError));
   }
