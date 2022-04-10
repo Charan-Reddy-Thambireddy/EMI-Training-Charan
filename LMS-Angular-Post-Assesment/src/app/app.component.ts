@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit,DoCheck{
-  title = 'LMS-Angular-Post-Assesment';
+  title = 'Library Management System';
   public isAuthenticated = false;
   public userName:string|null;
   public role:number;
