@@ -42,7 +42,8 @@ export class AuthService {
         localStorage.setItem('isLoggedIn',a.valid);
         localStorage.setItem('role',a.role);
         localStorage.setItem('userName',a.userName);
-        localStorage.setItem('Books',a.Books);
+        localStorage.setItem('Books',JSON.stringify(a.Books));
+        localStorage.setItem('Userdetails',JSON.stringify(a));
           });     
     });
   }

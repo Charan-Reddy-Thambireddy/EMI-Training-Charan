@@ -34,7 +34,8 @@ export class UserService {
     
     this.adminservice.getAllBooks().subscribe(response=>
       {
-        this.BooksTaken=response.filter(a =>this.authservice.userdetails.Books.includes(a.id))
+        var UserDetails=JSON.parse(localStorage.getItem('Userdetails')!);
+        this.BooksTaken=response.filter(a =>UserDetails.Books.includes(a.id))
         console.log(this.BooksTaken);
       },error=>{
         console.log(error);
@@ -43,13 +44,13 @@ export class UserService {
 
   }
   public ReadRequestEdit(Login:Login):Observable<Login>{
-    console.log('In Service');
-    console.log(Login);
-    console.log(Login.id);
     const url=`${this.baseUrl1}/${Login.id}`;
-    console.log(url);
-    //return this.http.put(url,Login);
     return this.http.put<Login>(url,Login, { headers: this.headers }).pipe(catchError(this.handleError));
+  }
+
+  public getUserbookdetails(userName:any,password:any):Observable<any>{
+    const url=`${this.baseUrl}?userName=${userName}&password=${password}`;
+    return this.http.get<Login>(url).pipe(catchError(this.handleError));
   }
 
 

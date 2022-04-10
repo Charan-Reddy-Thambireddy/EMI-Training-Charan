@@ -29,6 +29,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('role', a.role);
         localStorage.setItem('userName', a.userName);
         localStorage.setItem('Books', a.Books);
+        localStorage.setItem('Userdetails',JSON.stringify(a));
+        debugger;
         console.log(localStorage.getItem('isLoggedIn'))
         if (a.valid == true) {
           console.log(a.userName);

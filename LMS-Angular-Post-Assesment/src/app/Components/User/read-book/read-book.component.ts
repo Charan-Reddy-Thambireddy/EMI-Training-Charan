@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { AdminService } from 'src/app/Services/admin.service';
+import { Book } from 'src/app/Models/book';
 
 @Component({
   selector: 'app-read-book',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReadBookComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  Book = new Book();
+  constructor(private adminService: AdminService, private route: Router, private router: ActivatedRoute, public dialog: MatDialog) { 
   }
 
+  ngOnInit(): void {
+    console.log(this.router.snapshot.params['id']);
+    this.getBookDetailsById(this.router.snapshot.params['id']);
+  }
+
+  public getBookDetailsById(id: number): void {
+    this.adminService.getBookById(id).subscribe(data => {
+      this.Book = data;
+    });
+  }
 }
