@@ -6,10 +6,12 @@ import { ReadBookComponent } from './read-book/read-book.component';
 import { UserNavComponent } from './user-nav/user-nav.component';
 
 const routes: Routes = [
-  {path:'',component:BooksTakenComponent},
-  {path:'bookstaken',component:BooksTakenComponent},
-  {path:'allbooks',component:AllbooksComponent},
-  {path:'read-book/:id',component:ReadBookComponent}
+  {path:'',component:UserNavComponent,children:[
+    {path:'bookstaken',component:BooksTakenComponent},
+   {path:'allbooks',component:AllbooksComponent},
+   {path:'read-book/:id',component:ReadBookComponent}
+  ]},
+  
 ];
 
 @NgModule({

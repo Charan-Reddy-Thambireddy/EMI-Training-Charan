@@ -1,0 +1,92 @@
+{
+  "UserCreds": [
+    {
+      "id": 1001,
+      "userName": "Admin",
+      "password": "qwerty",
+      "role": 1,
+      "Books": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "valid": true
+    },
+    {
+      "id": 1002,
+      "userName": "Charan",
+      "password": "Lucky",
+      "role": 2,
+      "Books": [
+        5,
+        1
+      ],
+      "valid": true
+    },
+    {
+      "id": 1003,
+      "userName": "Vijay",
+      "password": "bhaskar@67",
+      "role": 2,
+      "Books": [],
+      "valid": true
+    },
+    {
+      "id": 1004,
+      "userName": "shanmukhi",
+      "password": "@123jhh",
+      "role": 2,
+      "Books": [
+        1,
+        5,
+        3,
+        5
+      ],
+      "valid": true
+    }
+  ],
+  "Books": [
+    {
+      "id": 1,
+      "Name": "Africa in the New Trade Environment",
+      "Genere": "Social",
+      "AuthorName": "Marcio Cruz, Mark A. Dutz, Carlos Rodríguez-Castelán",
+      "Description": "Trading Situation in the African Countries",
+      "Content": "Sub-Saharan Africa represents only a small share of global production and trade while hosting half of the extreme poor worldwide. To catch up with the rest of the world, the continent has no alternative: it must undertake reforms to scale up its supply capacity while better linking its production and trade to the global economy. If it does so, it stands to gain from unlimited demand and innovation along the supply chain. Some progress has been made over the past decade, with the region’s exports and imports growing rapidly. Because most African economies rely heavily on trade for a large share of national income, they will also be more vulnerable to the trade disruptions of external shocks, as illustrated by the recent COVID-19 pandemic. Africa in the New Trade Environment: Market Access in Troubled Times provides a comprehensive, state-of-the-art analysis by a team of renowned trade economists who present a strategy to bolster Sub-Saharan Africa’s market access in the current global environment."
+    },
+    {
+      "id": 2,
+      "Name": "Mr.Jane and Finch",
+      "Genere": "biography-auto",
+      "AuthorName": "Jane",
+      "Description": "Winston LaRose is an 80-year-old community activist affectionately known as Mr.Jane and Finch.",
+      "Content": "Winston LaRose is an 80-year-old community activist affectionately known as Mr.Jane and Finch. He has dedicated the last 25 years to supporting residents who live in the troubled community of Jane and Finch. With gentrification high up on the political agenda, he decides, for the first time, to run for office as Councillor of Toronto's Ward 7 and challenge the established powers that be."
+    },
+    {
+      "id": 3,
+      "Name": "Mr.Jane",
+      "Genere": "biography",
+      "AuthorName": "La Roseeeeeeeeeeeeeeeeee",
+      "Description": "Winston LaRose is an 80-year-old community activist affectionately known as Mr.Jane and Finch.",
+      "Content": "Winston LaRose is an 80-year-old community activist affectionately known as Mr.Jane and Finch. He has dedicated the last 25 years to supporting residents who live in the troubled community of Jane and Finch. With gentrification high up on the political agenda, he decides, for the first time, to run for office as Councillor of Toronto's Ward 7 and challenge the established powers that be."
+    },
+    {
+      "Name": "/sdfvhds/edited",
+      "Genere": "dfhfdhfgjfg",
+      "AuthorName": "demo",
+      "Description": "xdcfvgbhnjmklhgcvfdxgfxfdxfx",
+      "Content": "gcgfcgvhgvhgvhbnjhmbjnkjnkjnkjn,kljgjygfszeszesxfcgbjnkjokfddsczddxdddxdxfxfdxfxfcxfdxfxfxxfxfff",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "Name": "I too Had a Love Story",
+      "Genere": "Love Story ",
+      "AuthorName": "Ravinder Singh",
+      "Description": "It is Ravinder singh 's own love story",
+      "Content": "Ravin and Khushi are the male and female protagonists of the novel. The novel starts with a reunion in Kolkata of Ravin and his three male friends Manpreet, Amardeep, Happy, who used to study in the same engineering college. During the reunion they discuss their future plans of getting married and all of them accept that they did not think about it. Happy suggests Ravin to visit and sign up at Shaadi.com, an online matrimonial website.\n\nShe died. I survived.\nBecause I survived, I died everyday.\nI was bound by my stars to live a lonely life. Without her, I felt so alone. Though the fact is that it’s just she who is gone and everything else is the same. But this ‘everything else’ is nothing to me ...\n\n—Excerpt from the novel\nAfter the reunion, Ravin comes back to Bhubaneswar, where he works as an engineer for Infosys, and registers at Shaadi.com. After a few days of registering on the site, Ravin finds a girl named Khushi, a resident of Delhi, and an employee of CSC, Noida. Ravin and Khushi start talking to each other over phone and soon become good friends. They become curious about each other's interest and find there are many similarities between them. After a few months of conversation over phone, they realize that they have started falling in love with each other, although they have never met face-to-face. Very soon, Ravin is asked to travel to the United States for an office assignment. He is required to go to Delhi, where Khushi lives, to board the international flight. Ravin decides to go to Delhi one day earlier to meet Khushi for the first time, and spend time with her.\n\nIn Delhi, Ravin meets Khushi and her family including her mother and sisters and then starts his journey to the US. Even during his stay in the US, Ravin is constantly in touch with Khushi. After his return to India, Ravin meets Khushi once again. After sometime, Khushi's family visits Bhubaneswar and meet Ravin's parents. There, they decide the date of Ravin and Khushi's engagement. Both the families start preparing for the event. The engagement date was fixed on 14 Feb 2007. The reason behind this is Khushi wants to be Ravin's girlfriend and fiancée both on the Valentine's Day.\n\nJust before the engagement, Khushi meets with a road accident and is hospitalized in a critical condition. Despite all medical attempts and prayers of Ravin, Khushi dies after a few days. The novel ends with Ravin's narration of his current mental condition. To Ravin, his life has become meaningless after Khushi's death and he has lost interest in almost everything. He feels \"She died. I survived. Because I survived, I die everyday.\""
+    }
+  ]
+}

@@ -1,10 +1,6 @@
-
 <div class="example-container mat-elevation-z8" >
     <div class="button-row">
-        <a mat-raised-button  color="primary" [routerLink]="['./bookstaken']">
-            <mat-icon>undo</mat-icon>
-        </a>
-        <a mat-raised-button  color="primary" [routerLink]="['./bookstaken']">
+        <a mat-raised-button  color="primary" [routerLink]="['../../books-list']">
             <mat-icon>view_list</mat-icon>
         </a>
     </div>
@@ -27,5 +23,14 @@
                 <mat-card-subtitle><h3>{{Book.Content}}</h3></mat-card-subtitle>
             </mat-card-title>
         </mat-card-content>
+        <mat-divider insert></mat-divider>
+        <mat-card-actions>
+            <a mat-raised-button color="primary" (click)="delete(Book.id)">
+                <mat-icon>delete</mat-icon>
+            </a>
+            <a mat-raised-button color="primary" [routerLink]="['../../update-book',Book.id]">
+                <mat-icon>edit</mat-icon>
+            </a>
+        </mat-card-actions>
     </mat-card>
 </div>

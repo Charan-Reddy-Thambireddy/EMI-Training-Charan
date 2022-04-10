@@ -1,0 +1,51 @@
+<div class="example-container1 mat-elevation-z8">
+    <div class="button-row">
+        <a mat-raised-button mat-dialog-close color="primary" [routerLink]="['../']">
+            <mat-icon>undo</mat-icon>
+        </a>
+    </div>
+    <mat-card class="example-card">
+        <form [formGroup]="BookForm" (ngSubmit)="onFormSubmit(BookForm.value)">
+            <mat-form-field class="add-form-feilds">
+                <input matInput placeholder="Enter From Book Name" formControlName="Name">
+                <mat-error>
+                    <span *ngIf="!BookForm.get('Name')?.valid && BookForm.get('Name')?.touched">Name Required</span>
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="add-form-feilds">
+                <input placeholder="Enter To Book Genere" matInput formControlName="Genere">
+                <mat-error>
+                    <span *ngIf="!BookForm.get('Genere')?.valid && BookForm.get('Genere')?.touched">Genere
+                        Required</span>
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="add-form-feilds">
+                <input matInput placeholder="Enter Author Name" formControlName="AuthorName">
+                <mat-error>
+                    <span *ngIf="!BookForm.get('AuthorName')?.valid && BookForm.get('AuthorName')?.touched">AuthorName Required</span>
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="add-form-feilds">
+                <textarea matInput placeholder="Description" formControlName="Description"></textarea>
+                <mat-error>
+                    <span *ngIf="!BookForm.get('Description')?.valid && BookForm.get('Description')?.touched">Description Required</span>
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="add-form-feilds">
+                <textarea matInput placeholder="Content" formControlName="Content"></textarea>
+                <mat-error>
+                    <span *ngIf="!BookForm.get('Content')?.valid && BookForm.get('Content')?.touched">Content Required </span>
+                </mat-error>
+            </mat-form-field>
+            <div class="button-row">
+                <button mat-raised-button color="primary" type="submit" [disabled]="!BookForm.valid">
+                    <mat-icon>save</mat-icon>
+                </button>
+            </div>
+        </form>
+    </mat-card>
+</div>
