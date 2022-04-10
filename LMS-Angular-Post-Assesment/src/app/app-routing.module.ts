@@ -8,12 +8,15 @@ import { AllBooksComponent } from './Components/User/all-books/all-books.compone
 import { MyBooksComponent } from './Components/User/my-books/my-books.component';
 import { ReadBookComponent } from './Components/User/read-book/read-book.component';
 import { AdminGuard } from './Gaurds/admin.guard';
+import { LoginGuard } from './Gaurds/login.guard';
 import { UserGuard } from './Gaurds/user.guard';
+import { HomeComponent } from './Shared/components/home/home.component';
 import { LoginComponent } from './Shared/components/login/login.component';
 
 const routes: Routes = [
   
-  {path:'login',component:LoginComponent},
+  {path:'login',component:LoginComponent,canActivate:[LoginGuard]},
+  {path:'home',component:HomeComponent},
   {path:'add-book',component:AddBookComponent,canActivate:[AdminGuard]},
   {path:'update-book/:id', component:EditBookComponent,canActivate:[AdminGuard]},
   {path:'books-list',component:BooksListComponent,canActivate:[AdminGuard]},

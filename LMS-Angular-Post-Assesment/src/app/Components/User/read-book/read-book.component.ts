@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AdminService } from 'src/app/Services/admin.service';
 import { Book } from 'src/app/Models/book';
+import { UserService } from 'src/app/Services/user.service';
+import { Login } from 'src/app/Models/login';
 
 @Component({
   selector: 'app-read-book',
@@ -12,7 +14,8 @@ import { Book } from 'src/app/Models/book';
 export class ReadBookComponent implements OnInit {
 
   Book = new Book();
-  constructor(private adminService: AdminService, private route: Router, private router: ActivatedRoute, public dialog: MatDialog) { 
+  UserDetails:Login;
+  constructor(private adminService: AdminService, private route: Router, private router: ActivatedRoute, public dialog: MatDialog,public userservice:UserService) { 
   }
 
   ngOnInit(): void {
@@ -24,5 +27,16 @@ export class ReadBookComponent implements OnInit {
     this.adminService.getBookById(id).subscribe(data => {
       this.Book = data;
     });
+  }
+
+  public giveBackBook(id:number):void
+  {
+    this.UserDetails=JSON.parse(localStorage.getItem('Userdetails')!);
+      this.UserDetails.Books=this.UserDetails.Books.filter(a =>a!=id)
+      debugger;
+      this.userservice.ReadRequestEdit(this.UserDetails).subscribe(res=>{
+        localStorage.setItem('Userdetails',JSON.stringify(res));
+        this.route.navigate(['my-book']);
+      });
   }
 }
