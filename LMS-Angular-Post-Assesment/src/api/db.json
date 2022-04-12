@@ -37,9 +37,7 @@
       "role": 2,
       "Books": [
         1,
-        2,
-        6,
-        5
+        2
       ],
       "valid": true
     }
@@ -50,7 +48,7 @@
       "Name": "Africa in the New Trade Environment",
       "Genere": "Social",
       "AuthorName": "Marcio Cruz, Mark A. Dutz, Carlos Rodríguez-Castelán",
-      "Description": "Trading Situation in the African Countries",
+      "Description": "Trading Situation in the African Countries.",
       "Content": "Sub-Saharan Africa represents only a small share of global production and trade while hosting half of the extreme poor worldwide. To catch up with the rest of the world, the continent has no alternative: it must undertake reforms to scale up its supply capacity while better linking its production and trade to the global economy. If it does so, it stands to gain from unlimited demand and innovation along the supply chain. Some progress has been made over the past decade, with the region’s exports and imports growing rapidly. Because most African economies rely heavily on trade for a large share of national income, they will also be more vulnerable to the trade disruptions of external shocks, as illustrated by the recent COVID-19 pandemic. Africa in the New Trade Environment: Market Access in Troubled Times provides a comprehensive, state-of-the-art analysis by a team of renowned trade economists who present a strategy to bolster Sub-Saharan Africa’s market access in the current global environment."
     },
     {

@@ -1,6 +1,11 @@
 
 <div class="example-container mat-elevation-z8">
+  
     <div class="button-row">
+      <mat-form-field class="search-form-feilds">
+        <input matInput placeholder="Search with book name or author name or genere" type="text" [(ngModel)]='filteredBy'>
+      </mat-form-field>
+     
       <div class="mat-elevation-z4">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           <ng-container matColumnDef="id">
