@@ -60,6 +60,10 @@ export class AllBooksComponent implements OnInit {
   {
     alert('Already Available to read, Check in "My Books"');
   }
+  else if(this.UserDetails.Books.length>=3)
+  {
+    alert('U already taken three books. Not allowed to take more than that. Return one of them to Take this book.');
+  }
   else{
     this.UserDetails.Books.push(id);
     this.userservice.ReadRequestEdit(this.UserDetails).subscribe(res=>{
