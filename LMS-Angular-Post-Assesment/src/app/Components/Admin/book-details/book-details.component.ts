@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AdminService } from 'src/app/Services/admin.service';
 import { Book } from 'src/app/Models/book';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-book-details',
@@ -12,7 +13,7 @@ import { Book } from 'src/app/Models/book';
 export class BookDetailsComponent implements OnInit {
 
   Book = new Book();
-  constructor(private adminService: AdminService, private route: Router, private router: ActivatedRoute, public dialog: MatDialog) { 
+  constructor(private adminService: AdminService, private route: Router, private router: ActivatedRoute, public dialog: MatDialog,private toastr: ToastrService) { 
   }
 
   ngOnInit(): void {
@@ -28,6 +29,7 @@ export class BookDetailsComponent implements OnInit {
   public delete(id: number) {
     this.adminService.deleteBook(id).subscribe(response => {
       console.log(response);
+      this.toastr.success("Deleted Succesfully",'Success'); 
       this.route.navigate(['books-list']);
     }, (error: any) => {
       console.log(error);

@@ -1,5 +1,6 @@
 import { Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent implements OnInit,DoCheck{
   public isAuthenticated = false;
   public userName:string|null;
   public role:number;
-  constructor(private router: Router) { 
+  constructor(private router: Router,private toastr: ToastrService) { 
 
   }
 
@@ -35,7 +36,7 @@ export class AppComponent implements OnInit,DoCheck{
     this.isAuthenticated=false;
     this.userName='';
     this.role=0;
-    alert('logged Out succesfully');
+    this.toastr.success('Logged out Successfully','Success');
     this.router.navigate(['login']);
   }
 

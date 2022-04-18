@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/Services/admin.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class AddBookComponent implements OnInit {
 
   BookForm: FormGroup;
   
-  constructor(private adminService: AdminService,private router: Router, private formBuilder: FormBuilder,private route: ActivatedRoute ) {
+  constructor(private adminService: AdminService,private router: Router, private formBuilder: FormBuilder,private route: ActivatedRoute,private toastr: ToastrService ) {
        
      }
   
@@ -33,7 +34,7 @@ export class AddBookComponent implements OnInit {
       console.log(form);
      
      this.adminService.addBook(form).subscribe(response=>{
-       
+      this.toastr.success("Added Succesfully",'Success');    
       console.log(response);
         const id=response['id'];
         

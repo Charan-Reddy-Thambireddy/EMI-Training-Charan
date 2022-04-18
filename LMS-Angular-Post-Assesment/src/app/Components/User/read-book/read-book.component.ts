@@ -5,6 +5,7 @@ import { AdminService } from 'src/app/Services/admin.service';
 import { Book } from 'src/app/Models/book';
 import { UserService } from 'src/app/Services/user.service';
 import { Login } from 'src/app/Models/login';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-read-book',
@@ -15,7 +16,7 @@ export class ReadBookComponent implements OnInit {
 
   Book = new Book();
   UserDetails:Login;
-  constructor(private adminService: AdminService, private route: Router, private router: ActivatedRoute, public dialog: MatDialog,public userservice:UserService) { 
+  constructor(private adminService: AdminService, private route: Router, private router: ActivatedRoute, public dialog: MatDialog,public userservice:UserService,private toastr: ToastrService) { 
   }
 
   ngOnInit(): void {
@@ -35,6 +36,7 @@ export class ReadBookComponent implements OnInit {
       this.UserDetails.Books=this.UserDetails.Books.filter(a =>a!=id)
       debugger;
       this.userservice.ReadRequestEdit(this.UserDetails).subscribe(res=>{
+        this.toastr.success('Book Retured Successfully','Success');
         localStorage.setItem('Userdetails',JSON.stringify(res));
         this.route.navigate(['my-book']);
       });

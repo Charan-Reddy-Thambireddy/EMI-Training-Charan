@@ -7,6 +7,7 @@ import { AdminService } from 'src/app/Services/admin.service';
 import { Login } from 'src/app/Models/login';
 import { UserService } from 'src/app/Services/user.service';
 import { AuthService } from 'src/app/Services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -36,7 +37,7 @@ export class AllBooksComponent implements OnInit {
   }
 
  @ViewChild(MatPaginator) paginator: MatPaginator;
- constructor(private adminservice:AdminService, public dialog: MatDialog, public authservice:AuthService, public userservice:UserService) { }
+ constructor(private adminservice:AdminService, public dialog: MatDialog, public authservice:AuthService, public userservice:UserService,private toastr: ToastrService) { }
 
  ngOnInit(): void {
    this.adminservice.getAllBooks().subscribe(response=>
@@ -58,18 +59,18 @@ export class AllBooksComponent implements OnInit {
   debugger;
   if(this.UserDetails.Books.includes(id))
   {
-    alert('Already Available to read, Check in "My Books"');
+    this.toastr.warning('Already Available to read, Check in "My Books"','Warning');
   }
   else if(this.UserDetails.Books.length>=3)
   {
-    alert('U already taken three books. Not allowed to take more than that. Return one of them to Take this book.');
+    this.toastr.warning('You already taken three books. Not allowed to take more than that. Return one of them to Take this book.','Warning');
   }
   else{
     this.UserDetails.Books.push(id);
     this.userservice.ReadRequestEdit(this.UserDetails).subscribe(res=>{
       localStorage.setItem('Userdetails',JSON.stringify(res));
     });
-    alert('Request Accepted, Book is now available for redaing in "My Books"');
+    this.toastr.success('Request Accepted, Book is now available for redaing in "My Books"','Success')
   }
   
  }

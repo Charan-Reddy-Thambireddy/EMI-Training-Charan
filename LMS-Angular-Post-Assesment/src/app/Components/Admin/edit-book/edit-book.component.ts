@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/Services/admin.service';
 import { Book } from 'src/app/Models/book';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-book',
@@ -14,7 +15,7 @@ export class EditBookComponent implements OnInit {
   BookForm: FormGroup;
   Book:Book;
   
-  constructor(private adminService: AdminService,private route: Router, private formBuilder: FormBuilder,private router:ActivatedRoute) {
+  constructor(private adminService: AdminService,private route: Router, private formBuilder: FormBuilder,private router:ActivatedRoute,private toastr: ToastrService) {
        
      }
   
@@ -55,7 +56,7 @@ export class EditBookComponent implements OnInit {
     public onFormSubmit(form: Book)
     {
       this.adminService.editBook(form).subscribe(response=>{ 
-        alert('Updated Succesfully');  
+        this.toastr.success("Updated Succesfully",'Success');         
         this.route.navigate(['books-list']);
       },(error:any)=>{
         console.log(error);

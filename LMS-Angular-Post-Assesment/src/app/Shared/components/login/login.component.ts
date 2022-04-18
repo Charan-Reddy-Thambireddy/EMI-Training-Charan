@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   public password: string = '';
   //public user :Login = new Login();
   public isValidCreds: boolean = true;
-  constructor(private authservice: AuthService, private router: Router) {
+  constructor(private authservice: AuthService, private router: Router,private toastr: ToastrService) {
 
   }
 
@@ -36,22 +37,26 @@ export class LoginComponent implements OnInit {
           console.log(a.userName);
           this.isValidCreds = true;
           if (a.role == 1) {
-            alert('logged in succesfully as Admin');
+            this.toastr.success('logged in succesfully as Admin', 'Success');
+            //alert('logged in succesfully as Admin');
             this.router.navigate(['books-list']);
           }
           else {
-            alert('logged in succesfully as ' + localStorage.getItem('userName'));
+            this.toastr.success('logged in succesfully as ' + localStorage.getItem('userName'), 'Success');
+            //alert('logged in succesfully as ' + localStorage.getItem('userName'));
             this.router.navigate(['my-books']);
           }
         }
         else {
           this.isValidCreds = false;
+          this.toastr.error("Can't login with these credentials!",'Failure');
         }
      
       });
     }
     else{
       this.isValidCreds = false;
+      this.toastr.error("Can't login with these credentials!",'Failure');
     }
     });
 

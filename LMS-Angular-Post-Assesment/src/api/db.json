@@ -36,9 +36,9 @@
       "password": "@123jhh",
       "role": 2,
       "Books": [
+        5,
         1,
-        4,
-        5
+        3
       ],
       "valid": true
     }

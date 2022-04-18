@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { NavigationService } from '../Services/navigation.service';
 
@@ -7,7 +8,7 @@ import { NavigationService } from '../Services/navigation.service';
   providedIn: 'root'
 })
 export class AdminGuard implements CanActivate {
-  constructor(private navigation:NavigationService) { 
+  constructor(private navigation:NavigationService,private toastr: ToastrService) { 
 
   }
   canActivate(
@@ -22,7 +23,7 @@ export class AdminGuard implements CanActivate {
           return true;
         }
       }
-      alert('Not Eligible to acess the page');
+      this.toastr.error("Not Eligible to acess the page",'Failure');
       this.navigation.back();
     return false;
   }
