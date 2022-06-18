@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "970862ef-119a-47e6-92b0-4abfd0dc665e": {
+      "ProjectGuid": "970862ef-119a-47e6-92b0-4abfd0dc665e",
+      "DisplayName": "ManagementSystemCodeFirst",
+      "ColorIndex": 0
+    },
+    "17717013-0343-498a-b620-ad72f0630152": {
+      "ProjectGuid": "17717013-0343-498a-b620-ad72f0630152",
+      "DisplayName": "ManagementSystemCodeFirst.DataModel",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}

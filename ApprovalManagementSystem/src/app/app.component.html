@@ -14,22 +14,47 @@
       </ul>
     </div>
 </nav>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">    
-    <ul class="nav navbar-nav">
-      <li><a class="nav-link" routerLink="/home">Home</a></li>
-      <li><a class="nav-link" routerLink="/about">About</a></li>     
-      <li><a class="nav-link" routerLink="/Employeedata">Employee data</a></li>
-      <li><a class="nav-link" routerLink="/BudgetRequest">Approval Management</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="active"><a class="nav-link" routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+  <span>  
+    <button mat-button [routerLink]="['/about']">{{title}}</button>
+    <button mat-button [routerLink]="['/home']"><mat-icon>home</mat-icon></button>
+    <button mat-button [routerLink]="['/about']">About</button>
+  </span>
+  <span class="example-spacer"></span>
+  <div *ngIf="isAuthenticated">
+    <div *ngIf="role==1 || role==2 || role==3 || role==4">
+      <span>
+        <button mat-button [routerLink]="['apms']">Budget Approval Management System</button>
+        <button mat-button (click)="openSnackBar('Employee Management System functionality is not yet implemented', 'Okay')">Employee Details</button>
+      </span>
+    </div>
+    <div *ngIf="role==5">
+      <span>
+        <button mat-button [routerLink]="['my-books']">My Books</button>
+      </span>
+    </div>   
   </div>
-</nav>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <button mat-button routerLink="/login" *ngIf="!isAuthenticated">
+      <mat-icon>power_settings_new</mat-icon>
+      Login
+    </button>
+  </div>
+  <button *ngIf="isAuthenticated" mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+    <mat-icon>account_circle</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-menu x-position="before" #menu="matMenu">
+ <div mat-menu-item *ngIf="isAuthenticated">
+   <h1>{{this.userName}}</h1>
+ </div>
+  <button mat-menu-item *ngIf="isAuthenticated" (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+    Logout
+  </button>
+</mat-menu>
 </div>
-<div class="routeroutlet" style="background-color: #cfe0dd;"><router-outlet></router-outlet></div>
-
+<div class="routeroutlet" style="background-color: #cfe0dd; overflow-x: hidden;"><router-outlet></router-outlet></div>
 <div class="footer">
   <footer class="text-center text-lg-start text-white footer">       
     <div class="text-center p-3" style="padding: 0.5%;">

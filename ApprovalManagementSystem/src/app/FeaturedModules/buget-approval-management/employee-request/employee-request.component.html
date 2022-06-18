@@ -1,0 +1,37 @@
+<app-apmsnavigationbar></app-apmsnavigationbar>
+<div class="row" style="margin-top:1%;">
+  <div class="col-md-5"></div>
+  <div class="col-md-2"><h1 style="color:rgb(144, 145, 145)">Employee Requests</h1></div>
+  <div class="col-md-5"></div>
+</div>
+<mat-divider></mat-divider>
+<div class="row" style="margin-top:1%;">
+  <div class="col-md-1"></div>
+  <div class="col-md-2"><h2 style="color:rgb(144, 145, 145)">Select your sort option</h2> </div>
+  <div class="col-md-1"><button mat-raised-button (click)="sort(0)">All Requests</button></div>
+  <div class="col-md-1"><button mat-raised-button (click)="sort(1)">Initiated</button></div>
+  <div class="col-md-1"><button mat-raised-button (click)="sort(2)">Approved</button></div>
+  <div class="col-md-1"><button mat-raised-button (click)="sort(3)">Rejected</button></div>
+  <div class="col-md-1"><button mat-raised-button (click)="openSnackBar('Forwarded functionality is not yet implemented', 'Okay')">Forwarded</button></div>
+</div>
+<mat-divider></mat-divider>
+<div class="row"  style="margin-left:1%;margin-top:1%;">
+  <div class="col-md-3" *ngFor="let request of requests">
+    <mat-card class="example-card">
+      <mat-card-title>{{request.requestName}}</mat-card-title>
+      <mat-card-subtitle>Request ID:{{request.requestId}}</mat-card-subtitle>
+      <mat-card-content>
+        <p>Purpose:{{request.purpose}}</p>
+        <p>Approver:{{request.raisedTo}}</p>
+        <p>Estimated Cost:{{request.estimatedCost}}</p>
+        <p>Advance Amount:{{request.advanceAmount}}</p>
+        <p>Staus:{{request.status==1?'Initatied':request.status==2?'Accepted':request.status==3?'Rejected':request.status==4?'Forwaded':'Un Know'}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="openSnackBar('Details functionality is not yet implemented', 'Okay')">Details</button>
+        <button *ngIf="request.status==1" mat-raised-button color="primary" (click)="update(request,2)">Approve</button>
+        <button *ngIf="request.status==1" mat-raised-button color="warn" (click)="update(request,3)">Reject</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

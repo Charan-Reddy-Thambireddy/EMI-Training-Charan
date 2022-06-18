@@ -1,0 +1,24 @@
+<!--<lib-BudgetApproval-Emi></lib-BudgetApproval-Emi>-->
+<mat-card>
+    <mat-card-content>
+        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+            <h2>Log In</h2>
+            <mat-error *ngIf="!isValidCreds">
+                The Username & Password were not recognised
+            </mat-error>
+            <mat-form-field>
+                <input matInput placeholder="username" [(ngModel)]="userName"  name="userName" required>
+                <mat-error>
+                    please provide a valid Username
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input  matInput type="password" [(ngModel)]="password" placeholder="Password" name="password" required>
+                <mat-error>
+                    please provide a valid password
+                </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit">Login</button>
+        </form>
+    </mat-card-content>
+</mat-card>

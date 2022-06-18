@@ -1,14 +1,30 @@
-
+<div style="position:absolute; top:0px; left:0px; height:fit-content; right:0px;overflow:hidden;"><app-apmsnavigationbar></app-apmsnavigationbar></div>
 <mat-card style="width:50%; margin-left:25%; margin-top: 5%;">
   <mat-card-title style="text-align:center; margin-top:3% ;">Budget Request Form</mat-card-title> <br><br>
   <mat-card-content>
-<form action="">
+<form [formGroup]="RequestForm" (ngSubmit)="onFormSubmit(RequestForm.value)">
+  <div class="row form-item">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="requestName">
+        <mat-error>
+          <span *ngIf="!RequestForm.get('requestName')?.valid && RequestForm.get('requestName')?.touched">Name Required</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
   <div class="row form-item">
     <div class="col-md-2"></div>
     <div class="col-md-8">
       <mat-form-field appearance="fill" style="width: 100%;">
         <mat-label>Purpose</mat-label>
-        <input matInput type="text">
+        <input matInput type="text" formControlName="purpose">
+        <mat-error>
+          <span *ngIf="!RequestForm.get('purpose')?.valid && RequestForm.get('purpose')?.touched">Purpose Required</span>
+        </mat-error>
       </mat-form-field>
     </div>
     <div class="col-md-2"></div>
@@ -18,7 +34,10 @@
     <div class="col-md-8">
       <mat-form-field appearance="fill" style="width: 100%;">
         <mat-label>Description</mat-label>
-        <textarea matInput></textarea>
+        <textarea matInput formControlName="description"></textarea>
+        <mat-error>
+          <span *ngIf="!RequestForm.get('description')?.valid && RequestForm.get('description')?.touched">Description Required</span>
+        </mat-error>
       </mat-form-field>
     </div>
     <div class="col-md-2"></div>
@@ -28,14 +47,20 @@
     <div class="col-md-4">
       <mat-form-field appearance="fill">
         <mat-label>Approver</mat-label>
-        <input matInput type="text" value="Shivraj Totiger" readonly>
+        <input matInput type="text"  formControlName="raisedTo" readonly>
+        <mat-error>
+          <span *ngIf="!RequestForm.get('raisedTo')?.valid && RequestForm.get('raisedTo')?.touched">Approver Required</span>
+        </mat-error>
       </mat-form-field>
     </div>
     <div class="col-md-2"></div>
     <div class="col-md-4">
       <mat-form-field appearance="fill">
         <mat-label>Estimsted Cost <span>&#8377;</span></mat-label>
-        <input matInput type="number">
+        <input matInput type="number" formControlName="estimatedCost">
+        <mat-error>
+          <span *ngIf="!RequestForm.get('estimatedCost')?.valid && RequestForm.get('estimatedCost')?.touched">Estimated Cost Required</span>
+        </mat-error>
       </mat-form-field>
     </div>
     <div class="col-md-1"></div>
@@ -45,28 +70,30 @@
     <div class="col-md-4">
       <mat-form-field appearance="fill">
         <mat-label>Advance Amount  <span>&#8377;</span></mat-label>
-        <input matInput type="number">
+        <input matInput type="number" formControlName="advanceAmount" >
+        <!-- <mat-error>
+          <span *ngIf="!RequestForm.get('advanceAmount')?.valid && RequestForm.get('advanceAmount')?.touched">Advance Amount Required</span>
+        </mat-error> -->
       </mat-form-field>
     </div>
     <div class="col-md-2"></div>
     <div class="col-md-4">
       <mat-form-field appearance="fill">
         <mat-label>Planned Date</mat-label>
-        <input matInput type="date">
+        <input matInput type="date" formControlName="plannedDate">
+        <mat-error>
+          <span *ngIf="!RequestForm.get('plannedDate')?.valid && RequestForm.get('plannedDate')?.touched">PlannedDate Required</span>
+        </mat-error>
       </mat-form-field>
     </div>
     <div class="col-md-1"></div>
   </div> 
   <div class="row form-item">
-    <div class="col-md-3"></div>
+    <div class="col-md-5"></div>
     <div class="col-md-2">
-      <button mat-raised-button color="primary">Submit</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!RequestForm.valid">Submit</button>
     </div>
-    <div class="col-md-2"></div>
-    <div class="col-md-2">
-    <button mat-raised-button color="warn">Cancel</button>
-    </div>
-    <div class="col-md-3"></div>
+    <div class="col-md-5"></div>
   </div> 
   </form>
 </mat-card-content>

@@ -10,24 +10,31 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule} from '@angular/material/select';
 import { AppModule } from 'src/app/app.module';
+import { MaterialModule } from 'src/app/Shared/Modules/material/material.module';
+import { MatCardModule } from '@angular/material/card';
+import { EditRequestComponent } from './edit-request/edit-request.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ApmsnavigationbarComponent } from './apmsnavigationbar/apmsnavigationbar.component';
+import { EmployeeRequestComponent } from './employee-request/employee-request.component';
+
 
 
 @NgModule({
   declarations: [
-    RequestsListComponent
-
+    BudgetRequestComponent,
+    RequestsListComponent,
+    EditRequestComponent,
+    ApmsnavigationbarComponent,
+    EmployeeRequestComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,
-    BugetApprovalManagementRoutingModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatRippleModule,
-    MatOptionModule,
-    MatSelectModule,
-    AppModule
+    BugetApprovalManagementRoutingModule,  
+    MatCardModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class BugetApprovalManagementModule { }

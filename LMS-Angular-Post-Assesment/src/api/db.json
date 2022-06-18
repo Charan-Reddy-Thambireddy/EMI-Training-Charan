@@ -11,11 +11,11 @@
     {
       "id": 1002,
       "userName": "Charan",
-      "password": "Lucky",
+      "password": "qwerty",
       "role": 2,
       "Books": [
         5,
-        1
+        4
       ],
       "valid": true
     },
@@ -47,7 +47,7 @@
     {
       "id": 1,
       "Name": "Africa in the New Trade Environment",
-      "Genere": "Social",
+      "Genere": "Social 1",
       "AuthorName": "Marcio Cruz, Mark A. Dutz, Carlos Rodríguez-Castelán",
       "Description": "Trading Situation in the African Countries.",
       "Content": "Sub-Saharan Africa represents only a small share of global production and trade while hosting half of the extreme poor worldwide. To catch up with the rest of the world, the continent has no alternative: it must undertake reforms to scale up its supply capacity while better linking its production and trade to the global economy. If it does so, it stands to gain from unlimited demand and innovation along the supply chain. Some progress has been made over the past decade, with the region’s exports and imports growing rapidly. Because most African economies rely heavily on trade for a large share of national income, they will also be more vulnerable to the trade disruptions of external shocks, as illustrated by the recent COVID-19 pandemic. Africa in the New Trade Environment: Market Access in Troubled Times provides a comprehensive, state-of-the-art analysis by a team of renowned trade economists who present a strategy to bolster Sub-Saharan Africa’s market access in the current global environment."
@@ -91,6 +91,14 @@
       "AuthorName": "Ravinder Singh",
       "Description": "Continuation to the Novel \"I too Had a love Story\".",
       "Content": "can love happen twice basically revolves around Ravinder, Simar, and his friends? The novel starts very interestingly from an interview round on valentine’s day. Thereafter while the interview few questions make Ravinder’s friend read out the entire novel to them in the live show. One of his friends recites the whole story to them, Where he illuminates the major incidences to them from the novel which leaves everyone stunned with teary eyes.\n\nAccording to the novel, Ravinder was mentally very disturbed and bothered due to his girlfriend’s sudden demise. After a span of time, he gets a job in a foreign land where he meets this pretty girl(simar). Soon they befriend each other due to the availability of amazing compatibility and understanding between them which also makes both falls in love with each other.\n\nAlthough during this all, Seldom Ravinder would think of his past. Each time during dwelling on his past, he would get confused by coming across from a single question that can love happen twice. Although fate had something else decided for them. Finally due to some personal conflicts simar breakups with Ravinder again on the same date when his ex late girlfriend left him 3 years back."
+    },
+    {
+      "id": 7,
+      "Name": "Demo book at hall",
+      "Genere": "Demo edit",
+      "AuthorName": "Charan",
+      "Description": "hdbfgvnrgvmfnh fbnfbfbn",
+      "Content": "hfvbgdhgfjhgfvjhbgfjrhvgfjrhgvdhjrgbhjbgfjvhgfj"
     }
   ]
 }

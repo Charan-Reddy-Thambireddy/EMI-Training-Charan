@@ -33,7 +33,7 @@ export class BookDetailsComponent implements OnInit {
       this.route.navigate(['books-list']);
     }, (error: any) => {
       console.log(error);
-    })
+    });
   }
   public update(id: number) {
     this.route.navigate(['update-book',id]);

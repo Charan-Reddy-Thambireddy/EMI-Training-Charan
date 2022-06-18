@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './Components/about/about.component';
-import { HomeComponent } from './Components/home/home.component';
-import { LoginTemplateComponent } from './Components/login-template/login-template.component';
-import { BudgetRequestComponent } from './FeaturedModules/buget-approval-management/budget-request/budget-request.component';
-import { RequestsListComponent } from './FeaturedModules/buget-approval-management/requests-list/requests-list.component';
+import { ApmsGuard } from './Gaurds/apms.guard';
+import { LoginGuard } from './Gaurds/login.guard';
+import { AboutComponent } from './Shared/Components/about/about.component';
+import { HomeComponent } from './Shared/Components/home/home.component';
+import { LoginTemplateComponent } from './Shared/Components/login-template/login-template.component';
 
 const routes: Routes = [
-  {path: '',redirectTo:'/login',pathMatch: 'full'}, 
   {path:'home',component:HomeComponent},
   {path:'about',component:AboutComponent},
-  {path:'Employeedata',component:RequestsListComponent},
-  {path:'BudgetRequest',component:BudgetRequestComponent},
-  {path:'login',component:LoginTemplateComponent}
+  {path:'apms',loadChildren:()=>import('./FeaturedModules/buget-approval-management/buget-approval-management.module')
+  .then(module=>module.BugetApprovalManagementModule),canActivate:[ApmsGuard]},
+  {path:'ems',loadChildren:()=>import('./FeaturedModules/employee-management/employee-management.module')
+  .then(module=>module.EmployeeManagementModule)},
+  {path:'login',component:LoginTemplateComponent,canActivate:[LoginGuard]},
+  {path: '',redirectTo:'/login',pathMatch: 'full'},
+  {path:'**', redirectTo:'/login'}
 ];
 
 @NgModule({
