@@ -8,6 +8,7 @@ namespace ManagementSystemAPI.Services.Interface
     {
         List<Employee> GetAllEmployees();
         Employee GetEmployeeById(int id);
+        List<Employee> GetEmployeeByManager(int managerId);
         int AddEmployee(Employee employee);
         int UpdateEmployee(Employee employee);
         String DeleteEmployee(int id);

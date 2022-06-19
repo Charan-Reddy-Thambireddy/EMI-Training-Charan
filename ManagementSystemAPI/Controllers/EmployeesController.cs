@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ManagementSystem.DataModel.Entities;
 using ManagementSystemAPI.Services.Interface;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ManagementSystemAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policy = "2")]
     public class EmployeesController : ControllerBase
     {
         private readonly IEmployeeService _employeeService;
@@ -26,6 +28,11 @@ namespace ManagementSystemAPI.Controllers
         public List<Employee> GetEmployees()
         {
             return  _employeeService.GetAllEmployees();
+        }
+        [HttpGet("manager/{managerId}")]
+        public List<Employee> GetEmployeesByManagerId(int managerId)
+        {
+            return _employeeService.GetEmployeeByManager(managerId);
         }
 
         // GET: api/Employees/5

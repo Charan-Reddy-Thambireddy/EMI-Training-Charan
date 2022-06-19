@@ -34,6 +34,12 @@ namespace ManagementSystemAPI.Services
             return _IEmployeeRepository.GetEmployeeById(id);
         }
 
+        public List<Employee> GetEmployeeByManager(int managerId)
+        {
+            return _IEmployeeRepository.GetEmployeeByManager(managerId);    
+
+        }
+
         public int UpdateEmployee(Employee employee)
         {
             return _IEmployeeRepository.UpdateEmployee(employee);

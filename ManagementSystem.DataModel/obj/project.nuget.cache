@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "hKRLTeG4hKUqW0LgHCOq0OYQrDrBMVQlMSWSZ8a/QxQVIdKbusr9CxsDUeP4xAnxiAyVAomiRIJCxWrZ1B83VA==",
+  "dgSpecHash": "tY4VZ5H2mGfRwIahD4jfycSwkvDUuFYJedeyorLj7yyHdwCWNt/7wdCjjSVwU0Yq6lLNQg8AiZwh248w6fUwSQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\charan.reddy\\OneDrive - Euromonitor International\\Documents\\Repositories\\EMI-Training-Charan\\ManagementSystem.DataModel\\ManagementSystem.DataModel.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\charan.reddy\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.aspnetcore.authorization\\5.0.17\\microsoft.aspnetcore.authorization.5.0.17.nupkg.sha512",
+    "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.aspnetcore.metadata\\5.0.17\\microsoft.aspnetcore.metadata.5.0.17.nupkg.sha512",
     "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",

@@ -24,6 +24,16 @@ namespace ManagementSystemAPI.Services
             return _IRequestRepository.DeleteRequest(id);
         }
 
+        public List<Request> GetAllRequestOfRaisedBy(int raisedById)
+        {
+            return _IRequestRepository.GetAllRequestOfRaisedBy(raisedById);
+        }
+
+        public List<Request> GetAllRequestOfRaisedTo(int raisedToId)
+        {
+            return _IRequestRepository.GetAllRequestOfRaisedTo(raisedToId);
+        }
+
         public List<Request> GetAllRequests()
         {
             return _IRequestRepository.GetAllRequests();

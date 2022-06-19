@@ -40,6 +40,16 @@ namespace ManagementSystem.DataModel.Repository
             return "Removed " + request.Purpose + " Succesfully";
         }
 
+        public List<Request> GetAllRequestOfRaisedBy(int raisedById)
+        {
+            return _context.Requests.Where(x => x.RaisedBy == raisedById).ToList();
+        }
+
+        public List<Request> GetAllRequestOfRaisedTo(int raisedToId)
+        {
+            return _context.Requests.Where(x => x.RaisedTo == raisedToId).ToList();
+        }
+
         public List<Request> GetAllRequests()
         {
             try

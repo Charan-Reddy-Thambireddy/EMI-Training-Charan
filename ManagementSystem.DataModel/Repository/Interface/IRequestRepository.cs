@@ -10,6 +10,8 @@ namespace ManagementSystem.DataModel.Repository.Interface
     public interface IRequestRepository
     {
         List<Request> GetAllRequests();
+        List<Request> GetAllRequestOfRaisedBy(int raisedById);
+        List<Request> GetAllRequestOfRaisedTo(int raisedToId);
         int  AddRequest(Request request);
         int UpdateRequest(Request request);
         Request GetRequest(int id);

@@ -17,6 +17,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using ManagementSystemAPI.Services;
 using ManagementSystemAPI.Services.Interface;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Swashbuckle.AspNetCore.Filters;
+using System.Text;
 
 namespace ManagementSystemAPI
 {
@@ -38,8 +42,24 @@ namespace ManagementSystemAPI
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IRequestRepository,RequestRepository> ();
             services.AddScoped<IRequestService, RequestService>();
+            services.AddScoped<IUserRepository, UserRepository> ();
+            services.AddScoped<IUserService, UserService> ();
+            services.AddScoped<ITokenService, TokenService>();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options => options.TokenValidationParameters =
+                new TokenValidationParameters
+                {
 
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["TokenKey"])),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
 
+                });
+            services.AddAuthorization(config =>
+            {
+                config.AddPolicy("2", Policies.HrPolicy());
+            });
             services.AddDbContext<ManagementSystemContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
@@ -47,7 +67,32 @@ namespace ManagementSystemAPI
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ManagementSystemAPI", Version = "v1" });
+                c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+                {
+                    Description = "Standard JWT Authorization header. Example: \"bearer {token}\"",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
+                });
+                c.OperationFilter<SecurityRequirementsOperationFilter>();
+                services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["TokenKey"])),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
             });
+
+            services.AddAuthorization(config =>
+            {
+                config.AddPolicy("2", Policies.HrPolicy());
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,14 +101,14 @@ namespace ManagementSystemAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ManagementSystemAPI v1"));
+                  
             }
 
             app.UseHttpsRedirection();
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ManagementSystemAPI v1"));
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

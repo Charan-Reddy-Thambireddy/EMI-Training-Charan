@@ -36,6 +36,20 @@ namespace ManagementSystemAPI.Controllers
 
             return request;
         }
+        [HttpGet("raisedBy/{raisedById}")]
+        public List<Request> GetRequestOfRaisedBy(int raisedById)
+        {
+            var request = _requestService.GetAllRequestOfRaisedBy(raisedById);
+
+            return request;
+        }
+        [HttpGet("raisedTo/{raisedToId}")]
+        public List<Request> GetRequestOfRaisedTo(int raisedToId)
+        {
+            var request = _requestService.GetAllRequestOfRaisedTo(raisedToId);
+
+            return request;
+        }
 
         // PUT: api/Requests/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
