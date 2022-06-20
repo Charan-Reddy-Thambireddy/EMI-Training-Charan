@@ -1,16 +1,18 @@
-﻿using ManagementSystem.DataModel.Entities;
+﻿using ManagementSystem.DataModel.DTO;
+using ManagementSystem.DataModel.Entities;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ManagementSystemAPI.Services.Interface
 {
     public interface IEmployeeService
     {
-        List<Employee> GetAllEmployees();
-        Employee GetEmployeeById(int id);
-        List<Employee> GetEmployeeByManager(int managerId);
-        int AddEmployee(Employee employee);
-        int UpdateEmployee(Employee employee);
-        String DeleteEmployee(int id);
+        Task<List<Employee>> GetAllEmployees();
+        Task<Employee> GetEmployeeById(int id);
+        Task<List<EmployeeDetails>> GetEmployeeByManager(int managerId);
+        Task<int> AddEmployee(Employee employee);
+        Task<int> UpdateEmployee(Employee employee);
+        Task<String> DeleteEmployee(int id);
     }
 }

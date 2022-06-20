@@ -1,4 +1,5 @@
-﻿using ManagementSystem.DataModel.Entities;
+﻿using ManagementSystem.DataModel.DTO;
+using ManagementSystem.DataModel.Entities;
 using ManagementSystemAPI.Services.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,11 +25,20 @@ namespace ManagementSystemAPI.Controllers
             Employee employee = _userService.GetEmployeeByCreds(userName, password);
             if (employee != null)
             {
-                var tokenString = _tokenService.CreateToken(employee);
+                User user = new User();
+                user.UserName = userName;
+                user.Password = password;
+                user.RoleId = employee.DesignationId;
+                user.ManagerId = employee.ManagerId;
+                user.EmailId = employee.EmailId;
+                user.EmployeeName=employee.EmployeeName;    
+                user.EmployeeId=employee.EmployeeId;
+
+                var tokenString = _tokenService.CreateToken(user);
                 response = Ok(new
                 {
                     token = tokenString,
-                    employee = employee
+                    user = user
                 });
 
             }

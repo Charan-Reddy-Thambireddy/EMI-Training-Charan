@@ -1,7 +1,9 @@
-﻿using ManagementSystem.DataModel.Entities;
+﻿using ManagementSystem.DataModel.DTO;
+using ManagementSystem.DataModel.Entities;
 using ManagementSystem.DataModel.Repository.Interface;
 using ManagementSystemAPI.Services.Interface;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ManagementSystemAPI.Services
 {
@@ -14,35 +16,35 @@ namespace ManagementSystemAPI.Services
             _IEmployeeRepository= IEmployeeRepository;  
         }
 
-        public int AddEmployee(Employee employee)
+        public async Task<int> AddEmployee(Employee employee)
         {
-            return _IEmployeeRepository.AddEmployee(employee);
+            return await _IEmployeeRepository.AddEmployee(employee);
         }
 
-        public string DeleteEmployee(int id)
+        public async Task<string> DeleteEmployee(int id)
         {
-            return _IEmployeeRepository.DeleteEmployee(id);
+            return await _IEmployeeRepository.DeleteEmployee(id);
         }
 
-        public List<Employee> GetAllEmployees()
+        public async Task<List<Employee>> GetAllEmployees()
         {
-            return _IEmployeeRepository.GetAllEmployees();
+            return await _IEmployeeRepository.GetAllEmployees();
         }
 
-        public Employee GetEmployeeById(int id)
+        public async Task<Employee> GetEmployeeById(int id)
         {
-            return _IEmployeeRepository.GetEmployeeById(id);
+            return await _IEmployeeRepository.GetEmployeeById(id);
         }
 
-        public List<Employee> GetEmployeeByManager(int managerId)
+        public async Task<List<EmployeeDetails>> GetEmployeeByManager(int managerId)
         {
-            return _IEmployeeRepository.GetEmployeeByManager(managerId);    
+            return await _IEmployeeRepository.GetEmployeeByManager(managerId);    
 
         }
 
-        public int UpdateEmployee(Employee employee)
+        public async Task<int> UpdateEmployee(Employee employee)
         {
-            return _IEmployeeRepository.UpdateEmployee(employee);
+            return await _IEmployeeRepository.UpdateEmployee(employee);
         }
     }
 }

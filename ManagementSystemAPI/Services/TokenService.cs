@@ -1,4 +1,5 @@
-﻿using ManagementSystem.DataModel.Entities;
+﻿using ManagementSystem.DataModel.DTO;
+using ManagementSystem.DataModel.Entities;
 using ManagementSystemAPI.Services.Interface;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -18,13 +19,13 @@ namespace ManagementSystemAPI.Services
         {
             _symmetricSecurityKey= new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["TokenKey"]));
         }
-        public string CreateToken(Employee employee)
+        public string CreateToken(User user)
         {
             var claim = new List<Claim>()
             {
-                new Claim(JwtRegisteredClaimNames.Sub,employee.EmployeeName.ToString(CultureInfo.InvariantCulture)),
-                new Claim("EmployeeId",employee.EmployeeId.ToString(CultureInfo.InvariantCulture)), 
-                new Claim(ClaimTypes.Role,employee.DesignationId.ToString()),
+                new Claim(JwtRegisteredClaimNames.Sub,user.EmployeeName.ToString(CultureInfo.InvariantCulture)),
+                new Claim("EmployeeId",user.EmployeeId.ToString()), 
+                new Claim(ClaimTypes.Role,user.RoleId.ToString()),
                  new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
             var credentials = new SigningCredentials(_symmetricSecurityKey,SecurityAlgorithms.HmacSha256);

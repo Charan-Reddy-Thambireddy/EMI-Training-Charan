@@ -17,12 +17,12 @@ namespace ManagementSystem.DataModel.Repository
         {
             _context = context;
         }
-        public int AddRequest(Request request)
+        public async Task<int> AddRequest(Request request)
         {
             try
             {
                 _context.Requests.Add(request);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 return 1;
             }
             catch (Exception)
@@ -32,29 +32,29 @@ namespace ManagementSystem.DataModel.Repository
             }
         }
 
-        public string DeleteRequest(int id)
+        public async Task<string> DeleteRequest(int id)
         {
             Request request = _context.Requests.Find(id);
             _context.Requests.Remove(request);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return "Removed " + request.Purpose + " Succesfully";
         }
 
-        public List<Request> GetAllRequestOfRaisedBy(int raisedById)
+        public async Task<List<Request>> GetAllRequestOfRaisedBy(int raisedById)
         {
-            return _context.Requests.Where(x => x.RaisedBy == raisedById).ToList();
+            return await _context.Requests.Where(x => x.RaisedBy == raisedById).ToListAsync();
         }
 
-        public List<Request> GetAllRequestOfRaisedTo(int raisedToId)
+        public async Task<List<Request>> GetAllRequestOfRaisedTo(int raisedToId)
         {
-            return _context.Requests.Where(x => x.RaisedTo == raisedToId).ToList();
+            return await _context.Requests.Where(x => x.RaisedTo == raisedToId).ToListAsync();
         }
 
-        public List<Request> GetAllRequests()
+        public async Task<List<Request>> GetAllRequests()
         {
             try
             {
-                return _context.Requests.ToList();
+                return await _context.Requests.ToListAsync();
             }
             catch (Exception)
             {
@@ -63,15 +63,23 @@ namespace ManagementSystem.DataModel.Repository
             }
         }
 
-        public Request GetRequest(int id)
+        public async Task<Request> GetRequest(int id)
         {
-            return _context.Requests.FirstOrDefault(x => x.RequestId == id);
+            return await _context.Requests.FirstOrDefaultAsync(x => x.RequestId == id);
         }
 
-        public int UpdateRequest(Request request)
+        public async Task<int> UpdateRequest(Request request)
         {
             _context.Entry(request).State = EntityState.Modified;
-            _context.SaveChanges();
+            _context.SaveChangesAsync();
+            return 1;
+        }
+        public async Task<int> UpdateRequestStatus(int requestId, int status)
+        {
+            Request request = await GetRequest(requestId);    
+            request.Status = status;
+            _context.Entry(request).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
             return 1;
         }
     }

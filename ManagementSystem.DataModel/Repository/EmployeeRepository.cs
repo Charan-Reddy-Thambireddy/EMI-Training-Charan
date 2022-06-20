@@ -1,4 +1,5 @@
-﻿using ManagementSystem.DataModel.Entities;
+﻿using ManagementSystem.DataModel.DTO;
+using ManagementSystem.DataModel.Entities;
 using ManagementSystem.DataModel.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -17,12 +18,12 @@ namespace ManagementSystem.DataModel.Repository
         {
             _context = context;
         }
-        public int AddEmployee(Employee employee)
+        public async Task<int> AddEmployee(Employee employee)
         {
             try
             {
                 _context.Employees.Add(employee);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 return 1;
             }
             catch (Exception)
@@ -34,19 +35,19 @@ namespace ManagementSystem.DataModel.Repository
             
         }
 
-        public string DeleteEmployee(int id)
+        public async Task<string> DeleteEmployee(int id)
         {
            Employee employee = _context.Employees.Find(id);
             _context.Employees.Remove(employee);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return "Removed " + employee.EmployeeName + " Succesfully";
         }
 
-        public  List<Employee> GetAllEmployees()
+        public  async Task<List<Employee>> GetAllEmployees()
         {
             try
             {
-                return  _context.Employees.ToList();
+               return await _context.Employees.ToListAsync();
             }
             catch (Exception)
             {
@@ -56,21 +57,21 @@ namespace ManagementSystem.DataModel.Repository
             
         }
 
-        public Employee GetEmployeeById(int id)
+        public async Task<Employee> GetEmployeeById(int id)
         {
-            return _context.Employees.FirstOrDefault(x=>x.EmployeeId==id);
+            return await  _context.Employees.FirstOrDefaultAsync(x=>x.EmployeeId==id);
         }
 
-        public List<Employee> GetEmployeeByManager(int managerId)
+        public async Task<List<EmployeeDetails>> GetEmployeeByManager(int managerId)
         {
-            return _context.Employees.Where(x => x.ManagerId == managerId).ToList();
+            return await _context.Employees.Where(x => x.ManagerId == managerId).Select(x => new EmployeeDetails { EmployeeId= x.EmployeeId,EmployeeName=x.EmployeeName, DesignationName=x.DesignationName, DateOfJoining=x.DateOfJoining, EmailId=x.EmailId, ContactNo=x.ContactNo }).ToListAsync();
         }
 
-        public int UpdateEmployee(Employee employee)
+        public async Task<int> UpdateEmployee(Employee employee)
         {           
             _context.Entry(employee).State = EntityState.Modified;
-            _context.SaveChanges();
-            return 1;
+            await _context.SaveChangesAsync();
+            return  1;
         }
     }
 }

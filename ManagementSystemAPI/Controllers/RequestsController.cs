@@ -23,30 +23,30 @@ namespace ManagementSystemAPI.Controllers
 
         // GET: api/Requests
         [HttpGet]
-        public List<Request> GetRequests()
+        public async Task<List<Request>> GetRequests()
         {
-            return _requestService.GetAllRequests().ToList();
+            return await _requestService.GetAllRequests();
         }
 
         // GET: api/Requests/5
         [HttpGet("{id}")]
-        public Request GetRequest(int id)
+        public async Task<Request> GetRequest(int id)
         {
-            var request =  _requestService.GetRequest(id);
+            var request =  await _requestService.GetRequest(id);
 
             return request;
         }
         [HttpGet("raisedBy/{raisedById}")]
-        public List<Request> GetRequestOfRaisedBy(int raisedById)
+        public async Task<List<Request>> GetRequestOfRaisedBy(int raisedById)
         {
-            var request = _requestService.GetAllRequestOfRaisedBy(raisedById);
+            var request = await _requestService.GetAllRequestOfRaisedBy(raisedById);
 
             return request;
         }
         [HttpGet("raisedTo/{raisedToId}")]
-        public List<Request> GetRequestOfRaisedTo(int raisedToId)
+        public async Task<List<Request>> GetRequestOfRaisedTo(int raisedToId)
         {
-            var request = _requestService.GetAllRequestOfRaisedTo(raisedToId);
+            var request = await _requestService.GetAllRequestOfRaisedTo(raisedToId);
 
             return request;
         }
@@ -54,24 +54,30 @@ namespace ManagementSystemAPI.Controllers
         // PUT: api/Requests/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public int PutRequest(int id, Request request)
+        public async Task<int> PutRequest(int id, Request request)
         {         
-            return _requestService.UpdateRequest(request);
+            return await _requestService.UpdateRequest(request);
+        }
+
+        [HttpPut("{requestId}/{status}")]
+        public async Task<int> PutRequest(int requestId, int status)
+        {
+            return await _requestService.UpdateRequestStatus(requestId,status);
         }
 
         // POST: api/Requests
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public int PostRequest(Request request)
+        public async Task<int> PostRequest(Request request)
         {
-            return _requestService.AddRequest(request);
+            return await _requestService.AddRequest(request);
         }
 
         // DELETE: api/Requests/5
         [HttpDelete("{id}")]
-        public string DeleteRequest(int id)
+        public async Task<string> DeleteRequest(int id)
         {
-            return _requestService.DeleteRequest(id);
+            return await _requestService.DeleteRequest(id);
         }
     }
 }

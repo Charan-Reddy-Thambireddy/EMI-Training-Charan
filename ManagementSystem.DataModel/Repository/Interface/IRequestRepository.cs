@@ -9,12 +9,14 @@ namespace ManagementSystem.DataModel.Repository.Interface
 {
     public interface IRequestRepository
     {
-        List<Request> GetAllRequests();
-        List<Request> GetAllRequestOfRaisedBy(int raisedById);
-        List<Request> GetAllRequestOfRaisedTo(int raisedToId);
-        int  AddRequest(Request request);
-        int UpdateRequest(Request request);
-        Request GetRequest(int id);
-        String DeleteRequest(int id);
+        Task<List<Request>> GetAllRequests();
+        Task<List<Request>> GetAllRequestOfRaisedBy(int raisedById);
+        Task<List<Request>> GetAllRequestOfRaisedTo(int raisedToId);
+        Task<int> AddRequest(Request request);
+        Task<int> UpdateRequest(Request request);
+        Task<Request> GetRequest(int id);
+        Task<String> DeleteRequest(int id);
+
+        Task<int> UpdateRequestStatus(int requestId, int status);
     }
 }

@@ -2,6 +2,7 @@
 using ManagementSystem.DataModel.Repository.Interface;
 using ManagementSystemAPI.Services.Interface;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ManagementSystemAPI.Services
 {
@@ -14,39 +15,44 @@ namespace ManagementSystemAPI.Services
             _IRequestRepository = IRequestRepository;
         }
 
-        public int AddRequest(Request request)
+        public async Task<int> AddRequest(Request request)
         {
-            return _IRequestRepository.AddRequest(request);
+            return await _IRequestRepository.AddRequest(request);
         }
 
-        public string DeleteRequest(int id)
+        public async Task<string> DeleteRequest(int id)
         {
-            return _IRequestRepository.DeleteRequest(id);
+            return await _IRequestRepository.DeleteRequest(id);
         }
 
-        public List<Request> GetAllRequestOfRaisedBy(int raisedById)
+        public async Task<List<Request>> GetAllRequestOfRaisedBy(int raisedById)
         {
-            return _IRequestRepository.GetAllRequestOfRaisedBy(raisedById);
+            return await _IRequestRepository.GetAllRequestOfRaisedBy(raisedById);
         }
 
-        public List<Request> GetAllRequestOfRaisedTo(int raisedToId)
+        public async Task<List<Request>> GetAllRequestOfRaisedTo(int raisedToId)
         {
-            return _IRequestRepository.GetAllRequestOfRaisedTo(raisedToId);
+            return await _IRequestRepository.GetAllRequestOfRaisedTo(raisedToId);
         }
 
-        public List<Request> GetAllRequests()
+        public async Task<List<Request>> GetAllRequests()
         {
-            return _IRequestRepository.GetAllRequests();
+            return await _IRequestRepository.GetAllRequests();
         }
 
-        public Request GetRequest(int id)
+        public async Task<Request> GetRequest(int id)
         {
-            return _IRequestRepository.GetRequest(id);
+            return await _IRequestRepository.GetRequest(id);
         }
 
-        public int UpdateRequest(Request request)
+        public async Task<int> UpdateRequest(Request request)
         {
-            return _IRequestRepository.UpdateRequest(request);
+            return await _IRequestRepository.UpdateRequest(request);
+        }
+
+        public async Task<int> UpdateRequestStatus(int requestId, int status)
+        {
+           return await _IRequestRepository.UpdateRequestStatus(requestId,status);
         }
     }
 }
