@@ -1,24 +1,22 @@
 export class Requests {
-    id:number;
-    requestId:string;
-    requestName:string;
+    requestId:number;
     purpose:string;
     description:string;
     estimatedCost:number;
     spentAmount:number;
     advanceAmount:number;
     plannedDate:any;
-    raisedBy:string;
-    raisedTo:string;
+    raisedBy:number;
+    raisedTo:number;
     raisedOn:any;
     comments:string;
     accptedOrRejectedOn:any;
     escalationRefReqId:number;
     escalatedOn:any;
     status:number;
-    createdBy:string;
-    createdOn:any;
     updatedOn:any;
-    updatedBy:string;
-
+    updatedBy:number;
+    updatedByName:string;
+    raisedByName:string;
+    raisedToName:string;
 }

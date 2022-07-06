@@ -16,6 +16,7 @@ import { EditRequestComponent } from './edit-request/edit-request.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApmsnavigationbarComponent } from './apmsnavigationbar/apmsnavigationbar.component';
 import { EmployeeRequestComponent } from './employee-request/employee-request.component';
+import { RequestDetailsComponent } from './request-details/request-details.component';
 
 
 
@@ -25,7 +26,8 @@ import { EmployeeRequestComponent } from './employee-request/employee-request.co
     RequestsListComponent,
     EditRequestComponent,
     ApmsnavigationbarComponent,
-    EmployeeRequestComponent
+    EmployeeRequestComponent,
+    RequestDetailsComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   imports: [

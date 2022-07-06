@@ -46,6 +46,12 @@ namespace ManagementSystem.DataModel.Entities
 
                 entity.Property(e => e.DocName).HasMaxLength(255);
 
+                entity.Property(e => e.FileExtension).HasMaxLength(25);
+
+                entity.Property(e => e.FilePath).HasMaxLength(255);
+
+                entity.Property(e => e.MimeType).HasMaxLength(25);
+
                 entity.Property(e => e.UpdatedOn).HasColumnType("datetime");
 
                 entity.Property(e => e.UploadedOn).HasColumnType("datetime");

@@ -8,7 +8,7 @@ import { Requests } from '../Shared/Models/request';
 })
 export class RequestService {
 
-  baseUrl='http://localhost:3000/Requests';
+  baseUrl='https://localhost:44350/api/Requests';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http:HttpClient) { }
@@ -31,75 +31,77 @@ export class RequestService {
   return this.http.get<Requests[]>(this.baseUrl).pipe(catchError(this.handleError));
   }
 
-  public getSortedEmployeeRequests(raisedBy:string,status:number):Observable<Requests[]>{
-    const url=`${this.baseUrl}?raisedTo=${raisedBy}&status=${status}`;
+  public getSortedEmployeeRequests(raisedTo:string,status:number):Observable<Requests[]>{
+    const url=`${this.baseUrl}/raisedTo/${raisedTo}/${status}`;
     return this.http.get<Requests[]>(url).pipe(catchError(this.handleError));
     }
 
     public getSortedUserRequests(raisedBy:string,status:number):Observable<Requests[]>{
-      const url=`${this.baseUrl}?raisedBy=${raisedBy}&status=${status}`;
+      const url=`${this.baseUrl}/raisedBy/${raisedBy}/${status}`;
       return this.http.get<Requests[]>(url).pipe(catchError(this.handleError));
       }
   
   public getUserRequests(raisedBy:string):Observable<Requests[]>{
-    const url=`${this.baseUrl}?raisedBy=${raisedBy}`;
+    const url=`${this.baseUrl}/raisedBy/${raisedBy}`;
     return this.http.get<Requests[]>(url).pipe(catchError(this.handleError));
     }
 
   public getEmployeeRequests(raisedTo:string):Observable<Requests[]>{
-    const url=`${this.baseUrl}?raisedTo=${raisedTo}`;
+    const url=`${this.baseUrl}/raisedTo/${raisedTo}`;
     return this.http.get<Requests[]>(url).pipe(catchError(this.handleError));
   }
 
+  
   public addRequest(request:any):Observable<Requests>{
+    request.raisedTo=localStorage.getItem('managerId');
     request.status=1;
     request.accptedOrRejectedOn=null;
     request.comments='';
-    request.raisedBy=localStorage.getItem('userName');
-    request.createdBy=localStorage.getItem('userName');
+    request.raisedBy=localStorage.getItem('employeeId');
+    request.createdBy=localStorage.getItem('employeeId');
     request.createdOn= new Date();
     request.escalatedOn=null;
     request.escalationRefReqId=0;
     request.raisedOn= new Date();
-    request.requestId= '';
     request.spentAmount=0;
-    request.updatedBy='';
+    request.updatedBy=null;
     request.updatedOn=null;
-    return this.http.post<Requests>(this.baseUrl,request);
+
+    return this.http.post<Requests>("https://localhost:44350/api/Requests",request);
   }
 
-  public getRequestById(id:number):Observable<Requests>{
-    const url=`${this.baseUrl}/${id}`;
+  public getRequestById(requestId:number):Observable<Requests>{
+    const url=`${this.baseUrl}/${requestId}`;
     return this.http.get<Requests>(url).pipe(catchError(this.handleError));
   }
 
-  public deleteRequest(id:number):Observable<Requests>{
-    const url=`${this.baseUrl}/${id}`;
+  public deleteRequest(requestId:number):Observable<Requests>{
+    const url=`${this.baseUrl}/${requestId}`;
     return this.http.delete<Requests>(url).pipe(catchError(this.handleError));
   }
   public editRequest(request:any):Observable<Requests>{
+    request.raisedTo=localStorage.getItem('managerId');
     request.status=1;
     request.accptedOrRejectedOn=null;
     request.comments='';
-    request.raisedBy=localStorage.getItem('userName');
-    request.createdBy=localStorage.getItem('userName');
+    request.raisedBy=localStorage.getItem('employeeId');
+    request.createdBy=localStorage.getItem('employeeId');
     request.createdOn= new Date();
     request.escalatedOn=null;
     request.escalationRefReqId=0;
     request.raisedOn= new Date();
-    request.requestId= 'Req'+request.id;
     request.spentAmount=0;
-    request.updatedBy=localStorage.getItem('userName');
+    request.updatedBy=localStorage.getItem('employeeId');
     request.updatedOn=new Date();
     console.log(request);
-    const url=`${this.baseUrl}/${request.id}`;
+    const url=`${this.baseUrl}/${request.requestId}`;
     return this.http.put<Requests>(url,request, { headers: this.headers }).pipe(catchError(this.handleError));
   }
 
-  public updateRequestStatus(request:Requests):Observable<Requests>
+  public updateRequestStatus(requestId:number, status:number):Observable<Requests>
   {
-    const url=`${this.baseUrl}/${request.id}`;
-    return this.http.put<Requests>(url,request, { headers: this.headers }).pipe(catchError(this.handleError));
+    const url=`${this.baseUrl}/${requestId}/${status}/${localStorage.getItem('employeeId')}`;
+    return this.http.put<Requests>(url,{ headers: this.headers }).pipe(catchError(this.handleError));
   }
 
 }

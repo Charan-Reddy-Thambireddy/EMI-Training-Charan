@@ -1,0 +1,94 @@
+<app-apmsnavigationbar></app-apmsnavigationbar>
+<mat-card style="width:50%; margin-left:25%; margin-top: 5%;">
+    <mat-card-title style="text-align:center; margin-top:3% ;">Budget Request Details</mat-card-title> <br><br>
+    <mat-card-content>
+  <form [formGroup]="RequestForm">
+    <div class="row form-item">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-label>Purpose</mat-label>
+          <input matInput type="text" formControlName="purpose" readonly>
+        </mat-form-field>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+    <div class="row form-item">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description" readonly></textarea>
+        </mat-form-field>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+    <div class="row form-item">
+      <div class="col-md-4">
+        <mat-form-field appearance="fill">
+          <mat-label>Request ID</mat-label>
+          <input matInput type="text"  formControlName="requestId" readonly>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field appearance="fill">
+          <mat-label>Raised By</mat-label>
+          <input matInput type="text" formControlName="raisedBy" readonly>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field appearance="fill">
+          <mat-label>Approver</mat-label>
+          <input matInput type="text"  formControlName="raisedTo" readonly>
+        </mat-form-field>
+      </div>
+    </div> 
+    <div class="row form-item">
+      <div class="col-md-4">
+        <mat-form-field appearance="fill">
+          <mat-label>Estimsted Cost <span>&#8377;</span></mat-label>
+          <input matInput type="number" formControlName="estimatedCost" readonly>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field appearance="fill">
+          <mat-label>Advance Amount  <span>&#8377;</span></mat-label>
+          <input matInput type="number" formControlName="advanceAmount" readonly>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field appearance="fill">
+          <mat-label>Spent Amount  <span>&#8377;</span></mat-label>
+          <input matInput type="number" formControlName="spentAmount" readonly>
+        </mat-form-field>
+      </div>
+    </div> 
+    <div class="row form-item">
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+          <mat-form-field appearance="fill">
+            <mat-label>Planned Date</mat-label>
+            <input matInput type="date" formControlName="plannedDate" readonly>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+          <mat-form-field appearance="fill">
+            <mat-label>Status</mat-label>
+            <input matInput type="text" formControlName="status" readonly>
+          </mat-form-field>
+        </div>
+        <div class="col-md-1"></div>
+      </div> 
+      <div class="row form-item">
+        <div class="col-md-5"></div>
+        <div class="col-md-2">
+        <button mat-raised-button color="warn" type="button" [routerLink]="['../../Request-list']">Back</button>
+        </div>
+        <div class="col-md-3"></div>
+      </div> 
+    </form>
+  </mat-card-content>
+  </mat-card>
+  
+  

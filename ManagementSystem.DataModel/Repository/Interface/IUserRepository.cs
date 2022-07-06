@@ -1,4 +1,5 @@
-﻿using ManagementSystem.DataModel.Entities;
+﻿using ManagementSystem.DataModel.DTO;
+using ManagementSystem.DataModel.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace ManagementSystem.DataModel.Repository.Interface
 {
     public interface IUserRepository
     {
-        public Employee GetEmployeeByCreds(string userName, string password);
+        public User GetEmployeeByCreds(string userName, string password);
 
     }
 }

@@ -16,11 +16,11 @@ export class LoginGuard implements CanActivate {
       let role:number = JSON.parse(localStorage.getItem('role')!);
       if(isvalid)
       {
-        if(role==5)
+        if(role==6)
         {
          this.router.navigate(['ems']);
         }
-        else if(role==1 || role==2 || role==3)
+        else
         {
           this.router.navigate(['apms']);
         }

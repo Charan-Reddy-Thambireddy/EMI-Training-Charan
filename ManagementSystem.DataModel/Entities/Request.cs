@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -31,19 +30,13 @@ namespace ManagementSystem.DataModel.Entities
         public int? UpdatedBy { get; set; }
         public DateTime? UpdatedOn { get; set; }
         public DateTime? PlannedDate { get; set; }
-        [JsonIgnore]
+
         public virtual Request EscaltionRefReq { get; set; }
-        [JsonIgnore]
         public virtual Employee RaisedByNavigation { get; set; }
-        [JsonIgnore]
         public virtual Employee RaisedToNavigation { get; set; }
-        [JsonIgnore]
         public virtual Status StatusNavigation { get; set; }
-        [JsonIgnore]
         public virtual Employee UpdatedByNavigation { get; set; }
-        [JsonIgnore]
         public virtual ICollection<DocumentsUploaded> DocumentsUploadeds { get; set; }
-        [JsonIgnore]
         public virtual ICollection<Request> InverseEscaltionRefReq { get; set; }
     }
 }

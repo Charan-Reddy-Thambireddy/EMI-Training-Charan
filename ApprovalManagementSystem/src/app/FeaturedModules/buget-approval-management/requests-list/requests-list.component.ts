@@ -16,7 +16,7 @@ export class RequestsListComponent implements OnInit {
 
   requests:Requests[] =[];
   ngOnInit(): void {
-    this.requestservice.getUserRequests(localStorage.getItem('userName')!).subscribe( response=>
+    this.requestservice.getUserRequests(localStorage.getItem('employeeId')!).subscribe( response=>
       {
       this.requests=response;
       },error=>{
@@ -24,12 +24,13 @@ export class RequestsListComponent implements OnInit {
       })
     
   }
-  public delete(id:number):void{
-    this.requestservice.deleteRequest(id).subscribe(response=>{
+  public delete(requestId:number):void{
+    this.requestservice.deleteRequest(requestId).subscribe(response=>{
+      console.log(response);
       this.toastr.success("Deleted Succesfully",'Success'); 
-      this.requestservice.getUserRequests(localStorage.getItem('userName')!).subscribe( response=>
+      this.requestservice.getUserRequests(localStorage.getItem('employeeId')!).subscribe( response1=>
         {
-        this.requests=response;
+        this.requests=response1;
         },error=>{
           console.log(error);
         })
@@ -46,7 +47,7 @@ export class RequestsListComponent implements OnInit {
   public sort(status:number):void{
     if(status==0)
     {
-      this.requestservice.getUserRequests(localStorage.getItem('userName')!).subscribe( response=>
+      this.requestservice.getUserRequests(localStorage.getItem('employeeId')!).subscribe( response=>
         {
         this.requests=response;
         },error=>{
@@ -55,7 +56,7 @@ export class RequestsListComponent implements OnInit {
 
     }
     else{
-      this.requestservice.getSortedUserRequests(localStorage.getItem('userName')!,status).subscribe( response=>
+      this.requestservice.getSortedUserRequests(localStorage.getItem('employeeId')!,status).subscribe( response=>
         {
         this.requests=response;
         },error=>{

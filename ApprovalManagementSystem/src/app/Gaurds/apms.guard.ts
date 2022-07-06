@@ -18,7 +18,7 @@ export class ApmsGuard implements CanActivate {
       let role:number = JSON.parse(localStorage.getItem('role')!);
       if(isvalid)
       {
-        if(role==1 || role==2 || role==3)
+        if(role!=6)
         {
           return true;
         }

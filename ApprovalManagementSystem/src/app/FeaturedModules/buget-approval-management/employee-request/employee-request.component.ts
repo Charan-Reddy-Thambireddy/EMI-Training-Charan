@@ -14,8 +14,9 @@ export class EmployeeRequestComponent implements OnInit {
   constructor(private requestservice:RequestService,private _snackBar: MatSnackBar,private toastr: ToastrService,) { }
 
   requests:Requests[] =[];
+  role=localStorage.getItem('role');
   ngOnInit(): void {
-    this.requestservice.getEmployeeRequests(localStorage.getItem('userName')!).subscribe( response=>
+    this.requestservice.getEmployeeRequests(localStorage.getItem('employeeId')!).subscribe( response=>
       {
       this.requests=response;
       },error=>{
@@ -24,17 +25,19 @@ export class EmployeeRequestComponent implements OnInit {
     
   }
   public update(request:Requests, status:number):void{
-    request.status=status;
-    this.requestservice.updateRequestStatus(request).subscribe(response=>{
+    this.requestservice.updateRequestStatus(request.requestId,status).subscribe(response=>{
       if(status==2)
       {
         this.toastr.success("Approved Succesfully",'Success'); 
       }
-      else{
+      else if(status==3){
         this.toastr.success("Rejected Succesfully",'Success');
       }
+      else if(status==4){
+        this.toastr.success("Forwarded Succesfully",'Success');
+      }
        
-      this.requestservice.getEmployeeRequests(localStorage.getItem('userName')!).subscribe( response=>
+      this.requestservice.getEmployeeRequests(localStorage.getItem('employeeId')!).subscribe( response=>
         {
         this.requests=response;
         },error=>{
@@ -52,7 +55,7 @@ export class EmployeeRequestComponent implements OnInit {
   public sort(status:number):void{
     if(status==0)
     {
-      this.requestservice.getEmployeeRequests(localStorage.getItem('userName')!).subscribe( response=>
+      this.requestservice.getEmployeeRequests(localStorage.getItem('employeeId')!).subscribe( response=>
         {
         this.requests=response;
         },error=>{
@@ -61,7 +64,7 @@ export class EmployeeRequestComponent implements OnInit {
 
     }
     else{
-      this.requestservice.getSortedEmployeeRequests(localStorage.getItem('userName')!,status).subscribe( response=>
+      this.requestservice.getSortedEmployeeRequests(localStorage.getItem('employeeId')!,status).subscribe( response=>
         {
         this.requests=response;
         },error=>{

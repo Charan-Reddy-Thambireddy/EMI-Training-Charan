@@ -17,10 +17,8 @@ export class BudgetRequestComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    var UserDetails=JSON.parse(localStorage.getItem('Userdetails')!);
-    var manager=UserDetails.reportingTo;
+    var manager=localStorage.getItem('managerName');
     this.RequestForm= this.formBuilder.group({
-      requestName:['',Validators.required],
       purpose:['',Validators.required],
       description:['',Validators.required],
       raisedTo:[manager],
@@ -34,16 +32,8 @@ export class BudgetRequestComponent implements OnInit {
     console.log(form);
      
     this.requestservice.addRequest(form).subscribe(response=>{
-      response.requestId='Req'+response.id
-      this.requestservice.editRequest(response).subscribe(response=>{
-        console.log(response);
-        this.toastr.success("Added Succesfully",'Success');    
+      this.toastr.success("Added Succesfully",'Success');    
         this.router.navigate(['apms/Request-list']);
-      },(error:any)=>{
-        console.log(error);
-      })
-      
-     
      },(error:any)=>{
        console.log(error);
      })

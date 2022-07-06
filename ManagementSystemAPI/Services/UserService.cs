@@ -1,4 +1,5 @@
-﻿using ManagementSystem.DataModel.Entities;
+﻿using ManagementSystem.DataModel.DTO;
+using ManagementSystem.DataModel.Entities;
 using ManagementSystem.DataModel.Repository.Interface;
 using ManagementSystemAPI.Services.Interface;
 
@@ -11,7 +12,7 @@ namespace ManagementSystemAPI.Services
         {
             _userRepository = userrepository;   
         }
-        public Employee GetEmployeeByCreds(string userName, string password)
+        public User GetEmployeeByCreds(string userName, string password)
         {
             return _userRepository.GetEmployeeByCreds(userName, password); 
         }

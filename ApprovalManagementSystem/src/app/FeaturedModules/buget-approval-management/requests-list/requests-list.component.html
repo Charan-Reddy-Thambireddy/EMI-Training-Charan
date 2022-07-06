@@ -12,26 +12,27 @@
   <div class="col-md-1"><button mat-raised-button (click)="sort(1)">Initiated</button></div>
   <div class="col-md-1"><button mat-raised-button (click)="sort(2)">Approved</button></div>
   <div class="col-md-1"><button mat-raised-button (click)="sort(3)">Rejected</button></div>
-  <div class="col-md-1"><button mat-raised-button (click)="openSnackBar('Forwarded functionality is not yet implemented', 'Okay')">Forwarded</button></div>
+  <div class="col-md-1"><button mat-raised-button (click)="sort(4)">Forwarded</button></div>
+  <div class="col-md-1"><button mat-raised-button (click)="sort(5)">Escalated</button></div>
 </div>
 <mat-divider></mat-divider>
 <div style="padding-bottom:3%">
 <div class="row" style="margin-left:1%;margin: top 1%;">
   <div class="col-md-3" *ngFor="let request of requests">
       <mat-card class="example-card">
-        <mat-card-title>{{request.requestName}}</mat-card-title>
+        <mat-card-title>{{request.purpose}}</mat-card-title>
         <mat-card-subtitle>Request ID:{{request.requestId}}</mat-card-subtitle>
         <mat-card-content>
           <p>Purpose:{{request.purpose}}</p>
-          <p>Approver:{{request.raisedTo}}</p>
+          <p>Approver:{{request.raisedToName}}</p>
           <p>Estimated Cost:{{request.estimatedCost}}</p>
           <p>Advance Amount:{{request.advanceAmount}}</p>
-          <p>Staus:{{request.status==1?'Initatied':request.status==2?'Accepted':request.status==3?'Rejected':request.status==4?'Forwaded':'Un Know'}}</p>
+          <p>Staus:{{request.status==1?'Initatied':request.status==2?'Accepted':request.status==3?'Rejected':request.status==4?'Forwaded':request.status==5?'Escalated':'Un Know'}}</p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button (click)="openSnackBar('Details functionality is not yet implemented', 'Okay')">Details</button>
-          <button *ngIf="request.status==1" mat-raised-button color="primary" [routerLink]="['../edit-request',request.id]">Edit</button>
-          <button *ngIf="request.status==1" mat-raised-button color="warn" (click)="delete(request.id)">Revert</button>
+          <button mat-raised-button [routerLink]="['../details-request',request.requestId]">Details</button>
+          <button *ngIf="request.status==1" mat-raised-button color="primary" [routerLink]="['../edit-request',request.requestId]">Edit</button>
+          <button *ngIf="request.status==1" mat-raised-button color="warn" (click)="delete(request.requestId)">Revert</button>
           <button *ngIf="request.status==2" mat-raised-button (click)="openSnackBar('Upload functionality is not yet implemented', 'Okay')" >Upload</button>
           <button *ngIf="request.status==3 || request.status==4" mat-raised-button (click)="openSnackBar('Check Reason functionality is not yet implemented', 'Okay')">Check Reason</button>
         </mat-card-actions>

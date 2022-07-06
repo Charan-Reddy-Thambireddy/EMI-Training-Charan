@@ -25,7 +25,7 @@ namespace ManagementSystemAPI.Services
             {
                 new Claim(JwtRegisteredClaimNames.Sub,user.EmployeeName.ToString(CultureInfo.InvariantCulture)),
                 new Claim("EmployeeId",user.EmployeeId.ToString()), 
-                new Claim(ClaimTypes.Role,user.RoleId.ToString()),
+                new Claim(ClaimTypes.Role,user.DesignationId.ToString()),
                  new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
             var credentials = new SigningCredentials(_symmetricSecurityKey,SecurityAlgorithms.HmacSha256);

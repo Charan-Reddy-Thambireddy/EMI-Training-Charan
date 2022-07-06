@@ -46,6 +46,14 @@ namespace ManagementSystemAPI.Controllers
             return employee;
         }
 
+        [HttpGet("Employee/{id}")]
+
+        public async Task<string> GetEmployeeName(int id)
+        {
+            var employeeName = await _employeeService.GetEmployeeNameById(id);
+            return employeeName;
+        }
+
         // PUT: api/Employees/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

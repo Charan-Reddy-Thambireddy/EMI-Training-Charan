@@ -22,18 +22,9 @@ namespace ManagementSystemAPI.Controllers
         public IActionResult GetEmployee(string userName,string password)
         {
             IActionResult response = Unauthorized();
-            Employee employee = _userService.GetEmployeeByCreds(userName, password);
-            if (employee != null)
+            User user = _userService.GetEmployeeByCreds(userName, password);
+            if (user != null)
             {
-                User user = new User();
-                user.UserName = userName;
-                user.Password = password;
-                user.RoleId = employee.DesignationId;
-                user.ManagerId = employee.ManagerId;
-                user.EmailId = employee.EmailId;
-                user.EmployeeName=employee.EmployeeName;    
-                user.EmployeeId=employee.EmployeeId;
-
                 var tokenString = _tokenService.CreateToken(user);
                 response = Ok(new
                 {

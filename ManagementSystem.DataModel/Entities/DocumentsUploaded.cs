@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -17,11 +16,12 @@ namespace ManagementSystem.DataModel.Entities
         public DateTime? UploadedOn { get; set; }
         public int? UpdatedBy { get; set; }
         public DateTime? UpdatedOn { get; set; }
-        [JsonIgnore]
+        public string MimeType { get; set; }
+        public string FileExtension { get; set; }
+        public string FilePath { get; set; }
+
         public virtual Request Request { get; set; }
-        [JsonIgnore]
         public virtual Employee UpdatedByNavigation { get; set; }
-        [JsonIgnore]
         public virtual Employee UploadedByNavigation { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
     <span>  
-      <button *ngIf="role==1" mat-button [routerLink]="['EmployeeRequests']">Employee Requests</button>
+      <button *ngIf="role!=5||6" mat-button [routerLink]="['EmployeeRequests']">Employee Requests</button>
       <button mat-button [routerLink]="['Request-list']">My Requests</button>
       <button mat-button [routerLink]="['BudgetRequest']">Raise a Request</button>
     </span>

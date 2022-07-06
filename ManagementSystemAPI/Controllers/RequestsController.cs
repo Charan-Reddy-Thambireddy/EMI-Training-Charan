@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ManagementSystem.DataModel.Entities;
 using ManagementSystemAPI.Services.Interface;
+using ManagementSystem.DataModel.DTO;
 
 namespace ManagementSystemAPI.Controllers
 {
@@ -30,21 +31,22 @@ namespace ManagementSystemAPI.Controllers
 
         // GET: api/Requests/5
         [HttpGet("{id}")]
-        public async Task<Request> GetRequest(int id)
+        public async Task<RequestDetails> GetRequest(int id)
         {
-            var request =  await _requestService.GetRequest(id);
+            var request =  await _requestService.GetRequestWithId(id);
 
             return request;
         }
+        
         [HttpGet("raisedBy/{raisedById}")]
-        public async Task<List<Request>> GetRequestOfRaisedBy(int raisedById)
+        public async Task<List<RequestDetails>> GetRequestOfRaisedBy(int raisedById)
         {
-            var request = await _requestService.GetAllRequestOfRaisedBy(raisedById);
+            var requests = await _requestService.GetAllRequestOfRaisedBy(raisedById);
 
-            return request;
+            return requests;
         }
         [HttpGet("raisedTo/{raisedToId}")]
-        public async Task<List<Request>> GetRequestOfRaisedTo(int raisedToId)
+        public async Task<List<RequestDetails>> GetRequestOfRaisedTo(int raisedToId)
         {
             var request = await _requestService.GetAllRequestOfRaisedTo(raisedToId);
 
@@ -59,10 +61,10 @@ namespace ManagementSystemAPI.Controllers
             return await _requestService.UpdateRequest(request);
         }
 
-        [HttpPut("{requestId}/{status}")]
-        public async Task<int> PutRequest(int requestId, int status)
+        [HttpPut("{requestId}/{status}/{employeeId}")]
+        public async Task<int> PutRequest(int requestId, int status, int employeeId)
         {
-            return await _requestService.UpdateRequestStatus(requestId,status);
+            return await _requestService.UpdateRequestStatus(requestId,status, employeeId);
         }
 
         // POST: api/Requests
@@ -75,9 +77,24 @@ namespace ManagementSystemAPI.Controllers
 
         // DELETE: api/Requests/5
         [HttpDelete("{id}")]
-        public async Task<string> DeleteRequest(int id)
+        public async Task<int> DeleteRequest(int id)
         {
             return await _requestService.DeleteRequest(id);
         }
+
+        [HttpGet("raisedBy/{raisedById}/{status}")]
+        public async Task<List<RequestDetails>> GetSortedRequestOfRaisedBy(int raisedById, int status)
+        {
+            var requests = await _requestService.GetAllSortedRequestOfRaisedBy(raisedById, status);
+
+            return requests;
+        }
+        [HttpGet("raisedTo/{raisedToId}/{status}")]
+        public async Task<List<RequestDetails>> GetSortedRequestOfRaisedTo(int raisedToId, int status)
+        {
+             var request = await _requestService.GetAllSortedRequestOfRaisedTo(raisedToId,status);
+
+             return request;
+         }
     }
 }

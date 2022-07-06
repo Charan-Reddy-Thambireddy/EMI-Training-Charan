@@ -42,6 +42,8 @@ namespace ManagementSystemAPI
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IRequestRepository,RequestRepository> ();
             services.AddScoped<IRequestService, RequestService>();
+            services.AddScoped<IFileUploadRepository, FileUploadRepository>();
+            services.AddScoped<IFileUploadService, FileUploadService>();
             services.AddScoped<IUserRepository, UserRepository> ();
             services.AddScoped<IUserService, UserService> ();
             services.AddScoped<ITokenService, TokenService>();
@@ -92,6 +94,14 @@ namespace ManagementSystemAPI
             {
                 config.AddPolicy("2", Policies.HrPolicy());
             });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                builder =>
+                {
+                    builder.WithOrigins(new string[] { "http://localhost:4200", "https://localhost:44350" }).AllowAnyMethod().AllowAnyHeader();
+                });
+            });
 
         }
 
@@ -110,7 +120,7 @@ namespace ManagementSystemAPI
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseCors("CorsPolicy");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

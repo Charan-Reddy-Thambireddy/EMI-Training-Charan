@@ -8,7 +8,7 @@ import { Login } from '../Shared/Models/login';
 })
 export class LoginService {
 
-  baseUrl='http://localhost:3000/UserCreds';
+  baseUrl='https://localhost:44350/api/Users';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   userdetails = new Login();
   constructor(private http:HttpClient) { }
@@ -28,21 +28,9 @@ export class LoginService {
 
 
   public getUserdetails(creds:any):Observable<any>{
-    const url=`${this.baseUrl}?userName=${creds.userName}&password=${creds.password}`;
+    const url=`${this.baseUrl}/${creds.userName}/${creds.password}`;
+    //const url=" https://localhost:44350/api/Users/Charan/1234";
     return this.http.get<Login>(url).pipe(catchError(this.handleError));
   }
 
-  public validateDetails(creds:any):void{
-    this.getUserdetails(creds.value).subscribe(data=>{  
-      console.log(data);
-      data.forEach((a:any) => {
-        console.log(a);
-        this.userdetails=a;
-        localStorage.setItem('isLoggedIn',a.valid);
-        localStorage.setItem('role',a.role);
-        localStorage.setItem('userName',a.userName);
-        localStorage.setItem('Userdetails',JSON.stringify(a));
-          });     
-    });
-  }
 }

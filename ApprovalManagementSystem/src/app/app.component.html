@@ -22,13 +22,13 @@
   </span>
   <span class="example-spacer"></span>
   <div *ngIf="isAuthenticated">
-    <div *ngIf="role==1 || role==2 || role==3 || role==4">
+    <div *ngIf="role!=6">
       <span>
         <button mat-button [routerLink]="['apms']">Budget Approval Management System</button>
         <button mat-button (click)="openSnackBar('Employee Management System functionality is not yet implemented', 'Okay')">Employee Details</button>
       </span>
     </div>
-    <div *ngIf="role==5">
+    <div *ngIf="role==6">
       <span>
         <button mat-button [routerLink]="['my-books']">My Books</button>
       </span>

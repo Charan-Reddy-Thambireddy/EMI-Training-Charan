@@ -5,7 +5,7 @@ import { RequestService } from 'src/app/Services/request.service';
 import { Requests } from 'src/app/Shared/Models/request';
 import { ToastrService } from 'ngx-toastr';
 import { NavigationService } from 'src/app/Services/navigation.service';
-
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-edit-request',
   templateUrl: './edit-request.component.html',
@@ -15,16 +15,14 @@ export class EditRequestComponent implements OnInit {
 
   RequestForm: FormGroup;
   Request:Requests;
-  constructor(private navigation:NavigationService,private router: Router, private formBuilder: FormBuilder,private route: ActivatedRoute, private requestservice :RequestService,private toastr: ToastrService) { 
+  constructor(public datepipe: DatePipe,private navigation:NavigationService,private router: Router, private formBuilder: FormBuilder,private route: ActivatedRoute, private requestservice :RequestService,private toastr: ToastrService) { 
     
   }
 
   ngOnInit(): void {
-    var UserDetails=JSON.parse(localStorage.getItem('Userdetails')!);
-    var manager=UserDetails.reportingTo;
+    var manager=localStorage.getItem('managerName');
     this.RequestForm= this.formBuilder.group({
-      id:[],
-      requestName:['',Validators.required],
+      requestId:[],
       purpose:['',Validators.required],
       description:['',Validators.required],
       raisedTo:[manager],
@@ -32,27 +30,27 @@ export class EditRequestComponent implements OnInit {
         advanceAmount:['',Validators.required],
         plannedDate:['',Validators.required]
     });
-    this.getBookDetailsById(this.route.snapshot.params['id']);
+    this.getRequestDetailsById(this.route.snapshot.params['id']);
   }
-  public getBookDetailsById(id:number):void
+  public getRequestDetailsById(requestId:number):void
   {
-   this.requestservice.getRequestById(id).subscribe(data=>{
+   this.requestservice.getRequestById(requestId).subscribe(data=>{
      this.Request=data
-     this.patchBookDetails(data)
+     console.log(data);
+     console.log(this.Request);
+     this.patchRequestDetails(data)
    });
   }
   
-  public patchBookDetails(Request:Requests):void
+  public patchRequestDetails(Request:Requests):void
   {
     this.RequestForm.patchValue({
-      id:Request.id,
-      requestName:Request.requestName,
+      requestId:Request.requestId,
       purpose:Request.purpose,
       description:Request.description,
-      raisedTo:Request.raisedTo,
       estimatedCost:Request.estimatedCost,
       advanceAmount:Request.advanceAmount,
-      plannedDate:Request.plannedDate
+      plannedDate:this.datepipe.transform((Request.plannedDate), 'yyyy-MM-dd')
     })
 
   }

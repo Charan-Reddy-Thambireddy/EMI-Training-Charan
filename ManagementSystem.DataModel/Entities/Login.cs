@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -14,9 +13,8 @@ namespace ManagementSystem.DataModel.Entities
         public string UserName { get; set; }
         public string Password { get; set; }
         public int? IsActive { get; set; }
-        [JsonIgnore]
+
         public virtual Employee Employee { get; set; }
-        [JsonIgnore]
         public virtual Role Role { get; set; }
     }
 }

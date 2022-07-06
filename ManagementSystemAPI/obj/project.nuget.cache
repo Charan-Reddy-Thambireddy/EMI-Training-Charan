@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "xKR6B4wuBv3yj1wKkkvmLTrv5QobhICZOugbBMFlqW5zuoTQJ7n9hliJSr+O6yJ5nX2mlVNTGLMHssv+ae3tIg==",
+  "dgSpecHash": "f1NxTDBxEBlYJt4PX8Pd3wL7f0BgrotFTj1N8oiLjLLhGBxmhre2dy+cZoi8ZyIFa8yiPwtsVM8YfJG6uoyN+Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\charan.reddy\\OneDrive - Euromonitor International\\Documents\\Repositories\\EMI-Training-Charan\\ManagementSystemAPI\\ManagementSystemAPI.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.17\\microsoft.aspnetcore.authentication.jwtbearer.5.0.17.nupkg.sha512",
     "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.aspnetcore.authorization\\5.0.17\\microsoft.aspnetcore.authorization.5.0.17.nupkg.sha512",
     "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.aspnetcore.metadata\\5.0.17\\microsoft.aspnetcore.metadata.5.0.17.nupkg.sha512",
     "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\5.0.0\\microsoft.aspnetcore.razor.language.5.0.0.nupkg.sha512",
@@ -39,7 +40,7 @@
     "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
     "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
-    "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
     "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.identity.client\\4.14.0\\microsoft.identity.client.4.14.0.nupkg.sha512",
     "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.7.1\\microsoft.identitymodel.jsonwebtokens.6.7.1.nupkg.sha512",
     "C:\\Users\\charan.reddy\\.nuget\\packages\\microsoft.identitymodel.logging\\6.7.1\\microsoft.identitymodel.logging.6.7.1.nupkg.sha512",
@@ -95,6 +96,7 @@
     "C:\\Users\\charan.reddy\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
     "C:\\Users\\charan.reddy\\.nuget\\packages\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Users\\charan.reddy\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\charan.reddy\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512",
     "C:\\Users\\charan.reddy\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Users\\charan.reddy\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
     "C:\\Users\\charan.reddy\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",

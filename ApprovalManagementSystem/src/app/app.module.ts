@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RequestsListComponent } from './FeaturedModules/buget-approval-management/requests-list/requests-list.component';
 import { CommonModule } from '@angular/common';
 import { EditRequestComponent } from './FeaturedModules/buget-approval-management/edit-request/edit-request.component';
+import { DatePipe } from '@angular/common'
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { EditRequestComponent } from './FeaturedModules/buget-approval-managemen
     HttpClientModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
