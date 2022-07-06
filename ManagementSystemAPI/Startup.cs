@@ -47,6 +47,7 @@ namespace ManagementSystemAPI
             services.AddScoped<IUserRepository, UserRepository> ();
             services.AddScoped<IUserService, UserService> ();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<MailService, MailService>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => options.TokenValidationParameters =
                 new TokenValidationParameters

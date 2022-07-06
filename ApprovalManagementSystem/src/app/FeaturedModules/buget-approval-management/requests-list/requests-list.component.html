@@ -18,7 +18,7 @@
 <mat-divider></mat-divider>
 <div style="padding-bottom:3%">
 <div class="row" style="margin-left:1%;margin: top 1%;">
-  <div class="col-md-3" *ngFor="let request of requests">
+  <div class="col-md-4" *ngFor="let request of requests">
       <mat-card class="example-card">
         <mat-card-title>{{request.purpose}}</mat-card-title>
         <mat-card-subtitle>Request ID:{{request.requestId}}</mat-card-subtitle>
@@ -33,8 +33,9 @@
           <button mat-raised-button [routerLink]="['../details-request',request.requestId]">Details</button>
           <button *ngIf="request.status==1" mat-raised-button color="primary" [routerLink]="['../edit-request',request.requestId]">Edit</button>
           <button *ngIf="request.status==1" mat-raised-button color="warn" (click)="delete(request.requestId)">Revert</button>
-          <button *ngIf="request.status==2" mat-raised-button (click)="openSnackBar('Upload functionality is not yet implemented', 'Okay')" >Upload</button>
-          <button *ngIf="request.status==3 || request.status==4" mat-raised-button (click)="openSnackBar('Check Reason functionality is not yet implemented', 'Okay')">Check Reason</button>
+          <button *ngIf="request.status==2" mat-raised-button (click)="openDialog(request.requestId)">Upload</button>
+          <button *ngIf="request.status==3" mat-raised-button (click)="openReasonDialog(request.comments)">Check Reason</button>
+          <button *ngIf="request.status==2" mat-raised-button (click)="openSnackBar('View Bills Uploaded functionality is not yet implemented', 'Okay')">View Bills Uploded</button>
         </mat-card-actions>
       </mat-card>
   </div>

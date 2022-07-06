@@ -16,7 +16,7 @@ namespace ManagementSystemAPI.Services.Interface
         Task<Request> GetRequest(int id);
         Task<int> DeleteRequest(int id);
         Task<RequestDetails> GetRequestWithId(int reqId);
-        Task<int> UpdateRequestStatus(int requestId, int status, int employeeId);
+        Task<int> UpdateRequestStatus(int requestId, int status, int employeeId, string comments);
         Task<List<RequestDetails>> GetAllSortedRequestOfRaisedBy(int raisedById, int status);
         Task<List<RequestDetails>> GetAllSortedRequestOfRaisedTo(int raisedToId, int status);
     }

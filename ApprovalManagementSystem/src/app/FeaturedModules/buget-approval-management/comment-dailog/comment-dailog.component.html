@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Comment</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="requestForm" (ngSubmit)="onFormSubmit(requestForm.value)">
+    <div class="row form-item">
+        <mat-form-field appearance="fill">
+          <mat-label>Comments</mat-label>
+          <textarea matInput type="text"  formControlName="Comment"></textarea>
+          <mat-error>
+            <span *ngIf="!requestForm.get('Comment')?.valid && requestForm.get('Comment')?.touched">Comments Required</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    <div class="row form-item">
+      <div class="col-md-5"></div>
+      <div class="col-md-2">
+        <button mat-raised-button [mat-dialog-close]="true" cdkFocusInitial color="primary" type="submit" [disabled]="!requestForm.valid">Submit</button>
+      </div>
+      <div class="col-md-5"></div>
+    </div> 
+  </form>
+</mat-dialog-content>
+

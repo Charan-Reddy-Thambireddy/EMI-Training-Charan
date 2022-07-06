@@ -16,24 +16,27 @@
   <div class="col-md-1"><button mat-raised-button (click)="sort(5)">Escalated</button></div>
 </div>
 <mat-divider></mat-divider>
-<div class="row"  style="margin-left:1%;margin-top:1%;">
-  <div class="col-md-3" *ngFor="let request of requests">
-    <mat-card class="example-card">
-      <mat-card-title>{{request.purpose}}</mat-card-title>
-      <mat-card-subtitle>Request ID:{{request.requestId}}</mat-card-subtitle>
-      <mat-card-content>
-        <p>Purpose:{{request.purpose}}</p>
-        <p>Approver:{{request.raisedToName}}</p>
-        <p>Estimated Cost:{{request.estimatedCost}}</p>
-        <p>Advance Amount:{{request.advanceAmount}}</p>
-        <p>Staus:{{request.status==1?'Initatied':request.status==2?'Accepted':request.status==3?'Rejected':request.status==4?'Forwaded':request.status==5?'Escalated':'Un Know'}}</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button [routerLink]="['../details-request',request.requestId]">Details</button>
-        <button *ngIf="request.status==1 || request.status==5" mat-raised-button color="primary" (click)="update(request,2)">Approve</button>
-        <button *ngIf="request.status==1 || request.status==5" mat-raised-button color="warn" (click)="update(request,3)">Reject</button>
-        <button *ngIf="request.status==1 && role!='3'" mat-raised-button  (click)="update(request,4)">Forward</button>
-      </mat-card-actions>
-    </mat-card>
+<div style="padding-bottom:3%">
+<div class="row" style="margin-left:1%;margin: top 1%;">
+  <div class="col-md-4" *ngFor="let request of requests">
+      <mat-card class="example-card">
+        <mat-card-title>{{request.purpose}}</mat-card-title>
+        <mat-card-subtitle>Request ID:{{request.requestId}}</mat-card-subtitle>
+        <mat-card-content>
+          <p>Purpose:{{request.purpose}}</p>
+          <p>Approver:{{request.raisedToName}}</p>
+          <p>Estimated Cost:{{request.estimatedCost}}</p>
+          <p>Advance Amount:{{request.advanceAmount}}</p>
+          <p>Staus:{{request.status==1?'Initatied':request.status==2?'Accepted':request.status==3?'Rejected':request.status==4?'Forwaded':request.status==5?'Escalated':'Un Know'}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button [routerLink]="['../details-request',request.requestId]">Details</button>
+          <button *ngIf="request.status==1 || request.status==5" mat-raised-button color="primary" (click)="update(request,2)">Approve</button>
+          <button *ngIf="request.status==1 || request.status==5" mat-raised-button color="warn" (click)="openDialog(request.requestId)">Reject</button>
+          <button *ngIf="request.status==1 && role!='3'" mat-raised-button  (click)="update(request,4)">Forward</button>         
+        </mat-card-actions>
+      </mat-card>
   </div>
 </div>
+</div>
+

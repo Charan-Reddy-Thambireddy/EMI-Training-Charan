@@ -25,7 +25,7 @@
     <div *ngIf="role!=6">
       <span>
         <button mat-button [routerLink]="['apms']">Budget Approval Management System</button>
-        <button mat-button (click)="openSnackBar('Employee Management System functionality is not yet implemented', 'Okay')">Employee Details</button>
+        <button mat-button [routerLink]="['ems']">Employee Details</button>
       </span>
     </div>
     <div *ngIf="role==6">

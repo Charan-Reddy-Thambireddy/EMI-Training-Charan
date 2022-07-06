@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -9,6 +10,8 @@ namespace ManagementSystem.DataModel.Entities
     {
         public Employee()
         {
+            DocumentUpdatedByNavigations = new HashSet<Document>();
+            DocumentUploadedByNavigations = new HashSet<Document>();
             DocumentsUploadedUpdatedByNavigations = new HashSet<DocumentsUploaded>();
             DocumentsUploadedUploadedByNavigations = new HashSet<DocumentsUploaded>();
             InverseManager = new HashSet<Employee>();
@@ -32,15 +35,27 @@ namespace ManagementSystem.DataModel.Entities
         public DateTime? CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
         public int? UpdatedBy { get; set; }
-
+        [JsonIgnore]
         public virtual Role Designation { get; set; }
+        [JsonIgnore]
         public virtual Employee Manager { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<Document> DocumentUpdatedByNavigations { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<Document> DocumentUploadedByNavigations { get; set; }
+        [JsonIgnore]
         public virtual ICollection<DocumentsUploaded> DocumentsUploadedUpdatedByNavigations { get; set; }
+        [JsonIgnore]
         public virtual ICollection<DocumentsUploaded> DocumentsUploadedUploadedByNavigations { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Employee> InverseManager { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Login> Logins { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Request> RequestRaisedByNavigations { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Request> RequestRaisedToNavigations { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Request> RequestUpdatedByNavigations { get; set; }
     }
 }

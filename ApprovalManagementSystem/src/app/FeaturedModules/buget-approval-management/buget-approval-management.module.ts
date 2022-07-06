@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApmsnavigationbarComponent } from './apmsnavigationbar/apmsnavigationbar.component';
 import { EmployeeRequestComponent } from './employee-request/employee-request.component';
 import { RequestDetailsComponent } from './request-details/request-details.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { CommentDailogComponent } from './comment-dailog/comment-dailog.component';
 
 
 
@@ -27,7 +29,9 @@ import { RequestDetailsComponent } from './request-details/request-details.compo
     EditRequestComponent,
     ApmsnavigationbarComponent,
     EmployeeRequestComponent,
-    RequestDetailsComponent
+    RequestDetailsComponent,
+    FileUploadComponent,
+    CommentDailogComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -37,6 +41,8 @@ import { RequestDetailsComponent } from './request-details/request-details.compo
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule
   ]
 })
 export class BugetApprovalManagementModule { }

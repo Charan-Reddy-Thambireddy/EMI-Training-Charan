@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { RequestService } from 'src/app/Services/request.service';
 import { Requests } from 'src/app/Shared/Models/request';
+import { FileUploadComponent } from '../file-upload/file-upload.component';
 
 @Component({
   selector: 'app-requests-list',
@@ -12,7 +14,7 @@ import { Requests } from 'src/app/Shared/Models/request';
 })
 export class RequestsListComponent implements OnInit {
 
-  constructor(private requestservice:RequestService,private toastr: ToastrService,private route: Router,private _snackBar: MatSnackBar) { }
+  constructor(private requestservice:RequestService,private toastr: ToastrService,private route: Router,private _snackBar: MatSnackBar,public dialog: MatDialog) { }
 
   requests:Requests[] =[];
   ngOnInit(): void {
@@ -44,6 +46,21 @@ export class RequestsListComponent implements OnInit {
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action);
   }
+  openDialog(requestId:number) {
+    const dialogRef = this.dialog.open(FileUploadComponent,{data: requestId});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openReasonDialog(comment:string) {
+    const dialogRef = this.dialog.open(DialogDataExampleDialog,{data: comment});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
   public sort(status:number):void{
     if(status==0)
     {
@@ -65,4 +82,12 @@ export class RequestsListComponent implements OnInit {
     }
     
   }
+}
+@Component({
+  selector: 'dialog-data-example-dialog',
+  templateUrl: 'dialog-data-example-dialog.html',
+})
+export class DialogDataExampleDialog {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: string) {}
+
 }

@@ -219,7 +219,7 @@ namespace ManagementSystem.DataModel.Repository
             _context.SaveChangesAsync();
             return 1;
         }
-        public async Task<int> UpdateRequestStatus(int requestId, int status, int employeeId)
+        public async Task<int> UpdateRequestStatus(int requestId, int status, int employeeId, string comments)
         {
             Request request = await GetRequest(requestId);    
             if(status==4)
@@ -273,6 +273,7 @@ namespace ManagementSystem.DataModel.Repository
                 request.Status = status;
                 request.UpdatedBy = employeeId;
                 request.UpdatedOn = DateTime.Now;
+                request.Comments = comments;
                 _context.Entry(request).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
                 return 1;

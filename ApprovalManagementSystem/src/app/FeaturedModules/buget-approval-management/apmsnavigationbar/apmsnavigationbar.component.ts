@@ -16,9 +16,5 @@ export class ApmsnavigationbarComponent implements OnInit {
   ngDoCheck(): void {
     this.role=JSON.parse(localStorage.getItem('role')!);
   }
-  public navclick(link:string):void
-  {
-    this.router.navigate(['Request-list']);
-  }
 
 }

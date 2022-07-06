@@ -81,11 +81,11 @@
         <div class="col-md-1"></div>
       </div> 
       <div class="row form-item">
-        <div class="col-md-5"></div>
-        <div class="col-md-2">
-        <button mat-raised-button color="warn" type="button" [routerLink]="['../../Request-list']">Back</button>
-        </div>
-        <div class="col-md-3"></div>
+
+        <div class="col-md-4"><button *ngIf="(Request.status==1 || Request.status==5) && (employeeId != Request.raisedBy)" mat-raised-button color="primary" (click)="update(Request,2)">Approve</button></div>
+        <div class="col-md-2"><button *ngIf="(Request.status==1 || Request.status==5) && (employeeId != Request.raisedBy)" mat-raised-button color="warn" (click)="openDialog(Request.requestId)">Reject</button></div>
+        <div class="col-md-2"> <button mat-raised-button color="warn" type="button" (click)="Back()">Back</button></div>
+        <div class="col-md-4"><button *ngIf="Request.status==1 && role!='3' && (employeeId != Request.raisedBy) " mat-raised-button  (click)="update(Request,4)">Forward</button></div>
       </div> 
     </form>
   </mat-card-content>

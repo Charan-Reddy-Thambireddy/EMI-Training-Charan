@@ -41,6 +41,11 @@ namespace ManagementSystemAPI.Services
             return await _IEmployeeRepository.GetEmployeeByManager(managerId);    
 
         }
+        public async Task<List<ManagerList>> GetManagersList(int role)
+        {
+            return await _IEmployeeRepository.GetManagersList(role);
+
+        }
         public async Task<string> GetEmployeeNameById(int employeeId)
         {
             return await _IEmployeeRepository.GetEmployeeNameById(employeeId);

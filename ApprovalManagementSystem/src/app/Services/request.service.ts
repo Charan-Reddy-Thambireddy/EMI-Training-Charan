@@ -69,6 +69,19 @@ export class RequestService {
 
     return this.http.post<Requests>("https://localhost:44350/api/Requests",request);
   }
+  public addDocument(model:any){
+    const headers=new HttpHeaders();
+    model.EmployeeId=localStorage.getItem('employeeId');
+    headers.append('content-type','application/json');
+    console.log(model);
+    const httpoptions={headers};
+    const formData:FormData=new FormData();
+    formData.append('MyFile',model.MyFile);
+    formData.append('RequestId',model.RequestId);
+    formData.append('EmployeeId',model.EmployeeId);
+    console.log(formData.get("file"));
+   return this.http.post("https://localhost:44350/api/FileManager",formData,httpoptions);
+  }
 
   public getRequestById(requestId:number):Observable<Requests>{
     const url=`${this.baseUrl}/${requestId}`;
@@ -98,9 +111,9 @@ export class RequestService {
     return this.http.put<Requests>(url,request, { headers: this.headers }).pipe(catchError(this.handleError));
   }
 
-  public updateRequestStatus(requestId:number, status:number):Observable<Requests>
+  public updateRequestStatus(requestId:number, status:number, comments:string):Observable<Requests>
   {
-    const url=`${this.baseUrl}/${requestId}/${status}/${localStorage.getItem('employeeId')}`;
+    const url=`${this.baseUrl}/${requestId}/${status}/${localStorage.getItem('employeeId')}/${comments}`;
     return this.http.put<Requests>(url,{ headers: this.headers }).pipe(catchError(this.handleError));
   }
 

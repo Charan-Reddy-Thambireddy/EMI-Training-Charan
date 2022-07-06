@@ -35,7 +35,7 @@ namespace ManagementSystemAPI.Controllers
                 Directory.CreateDirectory(AppDirectory);
 
 
-            var file = dBContext.DocumentsUploadeds.Where(n => n.DocId == id).FirstOrDefault();
+            var file = dBContext.Documents.Where(n => n.DocId == id).FirstOrDefault();
 
             var path = Path.Combine(AppDirectory, file?.FilePath);
 

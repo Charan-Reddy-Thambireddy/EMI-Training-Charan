@@ -66,6 +66,11 @@ namespace ManagementSystem.DataModel.Repository
         {
             return await _context.Employees.Where(x => x.ManagerId == managerId).Select(x => new EmployeeDetails { EmployeeId= x.EmployeeId,EmployeeName=x.EmployeeName, DesignationName=x.DesignationName, DateOfJoining=x.DateOfJoining, EmailId=x.EmailId, ContactNo=x.ContactNo }).ToListAsync();
         }
+
+        public async Task<List<ManagerList>> GetManagersList(int role)
+        {
+            return await _context.Employees.Where(x => x.DesignationId == role).Select(x => new ManagerList { ManagerId = x.EmployeeId, ManagerName = x.EmployeeName}).ToListAsync();
+        }
         public async Task<string> GetEmployeeNameById(int employeeId)
         {
             return await _context.Employees.Where(x => x.EmployeeId == employeeId).Select(x => x.EmployeeName).FirstOrDefaultAsync();

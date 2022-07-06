@@ -61,10 +61,10 @@ namespace ManagementSystemAPI.Controllers
             return await _requestService.UpdateRequest(request);
         }
 
-        [HttpPut("{requestId}/{status}/{employeeId}")]
-        public async Task<int> PutRequest(int requestId, int status, int employeeId)
+        [HttpPut("{requestId}/{status}/{employeeId}/{comments}")]
+        public async Task<int> PutRequest(int requestId, int status, int employeeId, string comments)
         {
-            return await _requestService.UpdateRequestStatus(requestId,status, employeeId);
+            return await _requestService.UpdateRequestStatus(requestId,status, employeeId, comments);
         }
 
         // POST: api/Requests

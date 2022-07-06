@@ -12,3 +12,4 @@ C:\Users\charan.reddy\OneDrive - Euromonitor International\Documents\Repositorie
 C:\Users\charan.reddy\OneDrive - Euromonitor International\Documents\Repositories\EMI-Training-Charan\ManagementSystem.DataModel\obj\Debug\net5.0\ref\ManagementSystem.DataModel.dll
 C:\Users\charan.reddy\OneDrive - Euromonitor International\Documents\Repositories\EMI-Training-Charan\ManagementSystem.DataModel\obj\Debug\net5.0\ManagementSystem.DataModel.pdb
 C:\Users\charan.reddy\OneDrive - Euromonitor International\Documents\Repositories\EMI-Training-Charan\ManagementSystem.DataModel\obj\Debug\net5.0\ManagementSystem.DataModel.genruntimeconfig.cache
+C:\Users\charan.reddy\OneDrive - Euromonitor International\Documents\Repositories\EMI-Training-Charan\ManagementSystem.DataModel\obj\Debug\net5.0\ManagementSystem.DataModel.csproj.AssemblyReference.cache

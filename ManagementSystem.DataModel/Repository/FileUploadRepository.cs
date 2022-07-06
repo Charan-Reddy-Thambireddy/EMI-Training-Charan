@@ -31,8 +31,6 @@ namespace ManagementSystem.DataModel.Repository
                 FileRecord file = await SaveFileAsync(fileModel.MyFile);
                 if (!string.IsNullOrEmpty(file.FilePath))
                 {
-                    file.AltText = fileModel.AltText;
-                    file.Description = fileModel.Description;
                     file.RequestId = fileModel.RequestId;   
                     file.EmployeeId = fileModel.EmployeeId; 
                     SaveToDb(file);
@@ -50,7 +48,7 @@ namespace ManagementSystem.DataModel.Repository
             {
                 if (record == null)
                     throw new ArgumentNullException($"{nameof(record)}");
-                DocumentsUploaded fileData = new DocumentsUploaded();
+                Document fileData = new Document();
                 fileData.FilePath = record.FilePath;
                 fileData.DocName = record.FileName;
                 fileData.FileExtension = record.FileFormat;
@@ -58,7 +56,7 @@ namespace ManagementSystem.DataModel.Repository
                 fileData.RequestId = record.RequestId;
                 fileData.UploadedBy = record.EmployeeId;
                 fileData.UploadedOn = DateTime.Now;
-                _context.DocumentsUploadeds.Add(fileData);
+                _context.Documents.Add(fileData);
                 _context.SaveChangesAsync();
             }
             catch (Exception ex)

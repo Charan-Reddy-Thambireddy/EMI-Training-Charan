@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:'Request-list',component:RequestsListComponent},
   {path:'BudgetRequest',component:BudgetRequestComponent},
   {path:'EmployeeRequests',component:EmployeeRequestComponent},
-  {path:'',component:BudgetRequestComponent}
+  {path:'',redirectTo:'BudgetRequest'}
 ];
 
 @NgModule({

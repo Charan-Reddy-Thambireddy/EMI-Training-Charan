@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>Uplaod File</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="FileForm" (ngSubmit)="onFormSubmit(FileForm.value)">
+    <div class="row form-item">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <mat-form-field appearance="fill">
+          <mat-label>RequestId</mat-label>
+          <input matInput type="text"  formControlName="RequestId" readonly>
+          <mat-error>
+            <span *ngIf="!FileForm.get('RequestId')?.valid && FileForm.get('RequestId')?.touched">RequestId Required</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+    <div class="row form-item">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+          <mat-label>File</mat-label>
+          <input  type="file" formControlName="MyFile" (change)="uploading($event)">
+          <mat-error>
+            <span *ngIf="!FileForm.get('MyFile')?.valid && FileForm.get('MyFile')?.touched">File Required</span>
+          </mat-error>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+    <div class="row form-item">
+      <div class="col-md-5"></div>
+      <div class="col-md-2">
+        <button mat-raised-button [mat-dialog-close]="true" cdkFocusInitial color="primary" type="submit" [disabled]="!FileForm.valid">Submit</button>
+      </div>
+      <div class="col-md-5"></div>
+    </div> 
+  </form>
+</mat-dialog-content>
+

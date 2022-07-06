@@ -1,0 +1,9 @@
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+    <span>  
+      <button *ngIf="role!=5 && role!=6" mat-button [routerLink]="['../AllEmployees']">All Employee List</button>
+      <button *ngIf="role!=6" mat-button [routerLink]="['../Employee-list']">Employee List</button>
+      <button *ngIf="role==1 || role==2" mat-button [routerLink]="['../AddEmployee']">Add Employee</button>
+    </span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+

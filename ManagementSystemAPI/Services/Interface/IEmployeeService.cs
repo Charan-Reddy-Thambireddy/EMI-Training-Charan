@@ -15,5 +15,6 @@ namespace ManagementSystemAPI.Services.Interface
         Task<int> AddEmployee(Employee employee);
         Task<int> UpdateEmployee(Employee employee);
         Task<String> DeleteEmployee(int id);
+        Task<List<ManagerList>> GetManagersList(int role);
     }
 }

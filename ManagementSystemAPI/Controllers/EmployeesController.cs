@@ -36,6 +36,11 @@ namespace ManagementSystemAPI.Controllers
         {
             return await _employeeService.GetEmployeeByManager(managerId);
         }
+        [HttpGet("managers/{role}")]
+        public async Task<List<ManagerList>> GetManagersList(int role)
+        {
+            return await _employeeService.GetManagersList(role);
+        }
 
         // GET: api/Employees/5
         [HttpGet("{id}")]

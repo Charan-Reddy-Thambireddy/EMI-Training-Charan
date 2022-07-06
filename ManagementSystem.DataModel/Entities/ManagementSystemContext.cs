@@ -17,6 +17,7 @@ namespace ManagementSystem.DataModel.Entities
         {
         }
 
+        public virtual DbSet<Document> Documents { get; set; }
         public virtual DbSet<DocumentsUploaded> DocumentsUploadeds { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Login> Logins { get; set; }
@@ -36,6 +37,35 @@ namespace ManagementSystem.DataModel.Entities
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
+            modelBuilder.Entity<Document>(entity =>
+            {
+                entity.HasKey(e => e.DocId)
+                    .HasName("PK__Document__3EF188AD96986213");
+
+                entity.Property(e => e.FileExtension).HasMaxLength(255);
+
+                entity.Property(e => e.MimeType).HasMaxLength(255);
+
+                entity.Property(e => e.UpdatedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.UploadedOn).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Request)
+                    .WithMany(p => p.Documents)
+                    .HasForeignKey(d => d.RequestId)
+                    .HasConstraintName("FK__Documents__Reque__49C3F6B7");
+
+                entity.HasOne(d => d.UpdatedByNavigation)
+                    .WithMany(p => p.DocumentUpdatedByNavigations)
+                    .HasForeignKey(d => d.UpdatedBy)
+                    .HasConstraintName("FK__Documents__Updat__4AB81AF0");
+
+                entity.HasOne(d => d.UploadedByNavigation)
+                    .WithMany(p => p.DocumentUploadedByNavigations)
+                    .HasForeignKey(d => d.UploadedBy)
+                    .HasConstraintName("FK__Documents__Uploa__4BAC3F29");
+            });
 
             modelBuilder.Entity<DocumentsUploaded>(entity =>
             {

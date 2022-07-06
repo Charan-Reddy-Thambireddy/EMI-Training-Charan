@@ -10,15 +10,19 @@ namespace ManagementSystemAPI.Services
     public class RequestService : IRequestService
     {
         private readonly IRequestRepository _IRequestRepository;
+        private readonly MailService _MailService;
 
-        public RequestService(IRequestRepository IRequestRepository)
+        public RequestService(IRequestRepository IRequestRepository, MailService MailService)
         {
             _IRequestRepository = IRequestRepository;
+            _MailService = MailService; 
         }
 
         public async Task<int> AddRequest(Request request)
         {
-            return await _IRequestRepository.AddRequest(request);
+            await _IRequestRepository.AddRequest(request);
+            await _MailService.smtpMailer("", 1, request.RequestId);
+            return 1;
         }
 
         public async Task<int> DeleteRequest(int id)
@@ -55,9 +59,12 @@ namespace ManagementSystemAPI.Services
             return await _IRequestRepository.UpdateRequest(request);
         }
 
-        public async Task<int> UpdateRequestStatus(int requestId, int status, int employeeId)
+        public async Task<int> UpdateRequestStatus(int requestId, int status, int employeeId, string comments)
         {
-           return await _IRequestRepository.UpdateRequestStatus(requestId,status, employeeId);
+           
+            await _IRequestRepository.UpdateRequestStatus(requestId,status, employeeId, comments);
+            await _MailService.smtpMailer("", status, requestId);
+            return 1;
         }
 
         public async Task<List<RequestDetails>> GetAllSortedRequestOfRaisedBy(int raisedById, int status)

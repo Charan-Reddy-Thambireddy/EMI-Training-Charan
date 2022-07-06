@@ -16,6 +16,7 @@ namespace ManagementSystem.DataModel.Repository.Interface
         Task<string> GetEmployeeNameById(int employeeId);
         Task<int> AddEmployee(Employee employee); 
         Task<int> UpdateEmployee(Employee employee); 
-        Task<String> DeleteEmployee(int id);   
+        Task<String> DeleteEmployee(int id);
+        Task<List<ManagerList>> GetManagersList(int role);
     }
 }

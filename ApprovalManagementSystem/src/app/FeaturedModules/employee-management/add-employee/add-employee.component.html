@@ -1,0 +1,119 @@
+<<div style="position:absolute; top:0px; left:0px; height:fit-content; right:0px;overflow:hidden;"><app-ems-navigation-bar></app-ems-navigation-bar></div>
+<mat-card style="width:50%; margin-left:25%; margin-top: 5%;">
+  <mat-card-title style="text-align:center; margin-top:3% ;">Employee Form</mat-card-title> <br><br>
+  <mat-card-content>
+<form [formGroup]="EmployeeForm" (ngSubmit)="onFormSubmit(EmployeeForm.value)">
+    <div class="row form-item">
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+          <mat-form-field appearance="fill">
+            <mat-label>Employee Name</mat-label>
+            <input matInput type="text"  formControlName="EmployeeName">
+            <mat-error>
+              <span *ngIf="!EmployeeForm.get('EmployeeName')?.valid && EmployeeForm.get('EmployeeName')?.touched">EmployeeName Required</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+          <mat-form-field appearance="fill">
+            <mat-label>Designation</mat-label>
+            <mat-select  formControlName="DesignationId" (selectionChange)="onChange($event.value)" required>
+              <mat-option value="2">Hr</mat-option>
+              <mat-option value="3">Country Manager</mat-option>
+              <mat-option value="4">Manager</mat-option>
+              <mat-option value="5">Team Lead</mat-option>
+              <mat-option value="6" selected>Employee</mat-option>
+            </mat-select>
+            <mat-error>
+              <span *ngIf="!EmployeeForm.get('DesignationId')?.valid && EmployeeForm.get('DesignationId')?.touched">Designation Required</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-1"></div>
+      </div> 
+      <div class="row form-item">
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+          <mat-form-field appearance="fill">
+            <mat-label>Manager</mat-label>
+            <mat-select  formControlName="ManagerId">
+              <mat-option *ngFor="let manager of ManagerList" [value]="manager.managerId">
+                {{manager.managerName}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              <span *ngIf="!EmployeeForm.get('ManagerId')?.valid && EmployeeForm.get('ManagerId')?.touched">Manager Required</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+          <mat-form-field appearance="fill">
+            <mat-label>Date Of Joining</mat-label>
+            <input matInput type="date" formControlName="DateOfJoining">
+            <mat-error>
+              <span *ngIf="!EmployeeForm.get('DateOfJoining')?.valid && EmployeeForm.get('DateOfJoining')?.touched">DateOfJoining Required</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-1"></div>
+      </div> 
+  <div class="row form-item">
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+      <mat-form-field appearance="fill">
+        <mat-label>ContactNo</mat-label>
+        <input matInput type="text"  formControlName="ContactNo" >
+        <mat-error>
+          <span *ngIf="!EmployeeForm.get('ContactNo')?.valid && EmployeeForm.get('ContactNo')?.touched">ContactNo Required</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+      <mat-form-field appearance="fill">
+        <mat-label>EmailId</mat-label>
+        <input matInput type="email" formControlName="EmailId">
+        <mat-error>
+          <span *ngIf="!EmployeeForm.get('EmailId')?.valid && EmployeeForm.get('EmailId')?.touched">Estimated Cost Required</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-1"></div>
+  </div> 
+  <div class="row form-item">
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+      <mat-form-field appearance="fill">
+        <mat-label>Address </mat-label>
+        <textarea matInput type="number" formControlName="Address" ></textarea>
+        <mat-error>
+          <span *ngIf="!EmployeeForm.get('Address')?.valid && EmployeeForm.get('Address')?.touched">Advance Amount Required</span>
+        </mat-error> 
+      </mat-form-field>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+      <mat-form-field appearance="fill">
+        <mat-label>DateOfBirth</mat-label>
+        <input matInput type="date" formControlName="DateOfBirth">
+        <mat-error>
+          <span *ngIf="!EmployeeForm.get('DateOfBirth')?.valid && EmployeeForm.get('DateOfBirth')?.touched">DateOfBirth Required</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-1"></div>
+  </div> 
+  <div class="row form-item">
+    <div class="col-md-5"></div>
+    <div class="col-md-2">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!EmployeeForm.valid">Submit</button>
+    </div>
+    <div class="col-md-5"></div>
+  </div> 
+  </form>
+</mat-card-content>
+</mat-card>
+
+

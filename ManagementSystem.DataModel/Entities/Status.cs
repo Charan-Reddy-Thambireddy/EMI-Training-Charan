@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -14,7 +15,7 @@ namespace ManagementSystem.DataModel.Entities
 
         public int StatusId { get; set; }
         public string StatusName { get; set; }
-
+        [JsonIgnore]
         public virtual ICollection<Request> Requests { get; set; }
     }
 }
